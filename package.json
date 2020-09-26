@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "description": "server for something",
   "main": "app.js",
+  "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node ./bin/www",
+    "devstart": "SET DEBUG=mdn-assessments:* & npm start"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,16 @@
   },
   "homepage": "https://github.com/BassOfBass/express-random-server#readme",
   "dependencies": {
-    "rome": "^10.0.4-beta"
+    "express": "^4.17.1",
+    "rome": "^10.0.4-beta",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "node-sass-middleware": "0.11.0",
+    "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
