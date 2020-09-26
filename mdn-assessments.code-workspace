@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.rulers": [
+      {
+        "color": "#f54100",
+        "column": 90
+      }
+    ]
+	}
+}

@@ -1,0 +1,27 @@
+{
+  "name": "mdn-assessments",
+  "version": "0.0.1",
+  "description": "server for something",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BassOfBass/express-random-server.git"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "backend"
+  ],
+  "author": "BassOfBass",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BassOfBass/express-random-server/issues"
+  },
+  "homepage": "https://github.com/BassOfBass/express-random-server#readme",
+  "dependencies": {
+    "rome": "^10.0.4-beta"
+  }
+}
