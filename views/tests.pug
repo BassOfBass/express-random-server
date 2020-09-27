@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  section
+    h2= section
+    each article in articles
+      article
+        h3= article.heading
+        each link in article.links
+          p #[a(href=link.href)= link.title]
+        

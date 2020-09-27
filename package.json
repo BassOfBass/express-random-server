@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "devstart": "SET DEBUG=mdn-assessments:* & npm start"
+    "server": "nodemon ./bin/www",
+    "dev": "SET DEBUG=mdn-assessments:* & npm run server"
   },
   "repository": {
     "type": "git",
@@ -24,14 +25,14 @@
   },
   "homepage": "https://github.com/BassOfBass/express-random-server#readme",
   "dependencies": {
-    "express": "^4.17.1",
-    "rome": "^10.0.4-beta",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "express": "^4.17.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "node-sass-middleware": "0.11.0",
-    "pug": "2.0.0-beta11"
+    "pug": "2.0.0-beta11",
+    "rome": "^10.0.4-beta"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
