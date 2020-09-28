@@ -1,0 +1,68 @@
+extends layout
+
+  append styles
+  block content
+    h2 Form validation
+    section
+      h3 Task 1
+      blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Form_validation#Form_validation_1")
+        p In this task, we are providing you with a simple support query form, and we want you to add some validation features to it:
+        ol 
+          li Make all of the input fields mandatory to complete before the form can be submitted.
+          li Change the type of the "Email address" and "Phone number" fields to make the browser apply some more specific validation suitable for the data being asked for.
+          li Give the "User name" field a required length of between 5 and 20 characters, the "Phone number" field a maximum length of 15 characters, and the "Comment" field a maximum length of 200 characters.
+        p Try submitting your form — it should refuse to submit until the above constaints are followed, and give suitable error messages. To help, you might want to consider adding some simple CSS to show when a form field is valid or invalid.
+      form
+        р2 Enter your support query
+        ul
+          li
+            label(for="uname") 
+            input#uname(type="text" name="uname" required)
+          li
+            label(for="email") 
+            input#email(type="email" name="email" required)
+          li
+            label(for="phone") 
+            input#phone(type="tel" name="phone" required)
+          li
+            label(for="comment") 
+            textarea#comment(type="text" name="comment" required)
+          li
+            button(type="submit") Submit comment
+    section
+      h3 Task 2
+      blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Form_validation#Form_validation_2")
+        p Now we want you to take the same form you saw in the previous task (use your previous answer if you want to), and add some more specific pattern validation to the first three fields using regular expressions.
+        ol
+          li All of the user names in our application consist of a single letter, followed by a dot, followed by three or more letters or numbers. All letters should be lowercase.
+          li All of the email addresses for our users consist of one or more letters (lower or upper case) or numbers, followed by "@bigcorp.eu".
+          li Remove the length validation from the phone number field if it is present, and set it so that it accepts 10 digits — either 10 digits in a row, or a pattern of three digits, three digits, then four digits, separated by either spaces, dashes, or dots.
+      form
+        h2 Enter your support query
+        ul 
+          li 
+            label(for="uname") 
+            input#uname(type="text" name="uname" required)
+          li 
+            label(for="email") 
+            input#email(type="text" name="email" required)
+          li 
+            label(for="phone") 
+            input#phone(type="text" name="phone" required)
+          li 
+            label(for="comment") 
+            input#comment(type="text" name="comment" required)
+          li 
+            button(type="submit") Submit comment
+            
+    section
+      h3 Task 3
+      blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Form_validation#Form_validation_3")
+        p In our final task for this set, we are providing you with a similar example to what you saw in the accompanying article — a simple email address entry input. We would like you to use the constraint validation API, plus some form validation attributes, to program some custom error messages.
+        ol 
+          li Make the input mandatory to fill in, and give it a minimum length of 10 characters.
+          li Add an event listener that checks whether the inputted value is an email address, and whether it is long enough. If it doesn't look like an email address or is too short, provide the user with appropriate custom error messages.
+      form
+        label(for="mail") I would like you to provide me with an e-mail address:
+        input#mail(type="email" name="mail")
+        button(type="submit") Submit

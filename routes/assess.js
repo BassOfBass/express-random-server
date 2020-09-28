@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const assessController = require("../controllers/assessController");
+
 /**
  * Represents an article in test area.
  */
@@ -33,37 +35,40 @@ class ArticleLink {
 
 const ARTICLES = [
   new Article("Form structure", [
-    new ArticleLink("Task 1", "/forms/form-structure1.html"),
+    new ArticleLink("Task 1", "forms/form-structure"),
   ]),
   new Article("Basic controls", [
-    new ArticleLink("Task 1", "/forms/basic-controls1.html"),
-    new ArticleLink("Task 2", "/forms/basic-controls2.html"),
-    new ArticleLink("Task 3", "/forms/basic-controls3.html"),
+    new ArticleLink("Task 1", "forms/basic-controls"),
   ]),
   new Article("HTML5 controls", [
-    new ArticleLink("Task 1", "/forms/html5-controls1.html"),
-    new ArticleLink("Task 2", "/forms/html5-controls2.html"),
+    new ArticleLink("Task 1", "forms/html5-controls"),
   ]),
   new Article("Other controls", [
-    new ArticleLink("Tasks", "/forms/other-controls.html"),
+    new ArticleLink("Tasks", "forms/other-controls"),
   ]),
   new Article("Styling basics", [
-    new ArticleLink("Task", "/forms/styling-basics.html")
+    new ArticleLink("Task", "forms/styling-basics")
   ]),
   new Article("Advanced styling", [
-    new ArticleLink("Tasks", "/forms/advanced-styling.html"),
+    new ArticleLink("Tasks", "forms/advanced-styling"),
   ]),
   new Article("Form validation", [
-    new ArticleLink("Tasks", "/forms/form-validation.html"),
+    new ArticleLink("Tasks", "forms/form-validation"),
   ]),
 ]
 
 router.get('/', (req, res, next) => {
-  res.render("tests", {
+  res.render("assess", {
     title: "MDN assessments",
     section: "Forms",
     articles: ARTICLES,
   });
 });
+
+router.get("/forms", (req, res, next) => {
+  res.redirect("/assess");
+});
+
+router.get("forms/form-structure", assessController.invokeFormStructure);
 
 module.exports = router;
