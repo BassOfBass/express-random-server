@@ -35,25 +35,25 @@ class ArticleLink {
 
 const ARTICLES = [
   new Article("Form structure", [
-    new ArticleLink("Task 1", "forms/form-structure"),
+    new ArticleLink("Task 1", "assess/forms/form-structure"),
   ]),
   new Article("Basic controls", [
-    new ArticleLink("Task 1", "forms/basic-controls"),
+    new ArticleLink("Task 1", "assess/forms/basic-controls"),
   ]),
   new Article("HTML5 controls", [
-    new ArticleLink("Task 1", "forms/html5-controls"),
+    new ArticleLink("Task 1", "assess/forms/html5-controls"),
   ]),
   new Article("Other controls", [
-    new ArticleLink("Tasks", "forms/other-controls"),
+    new ArticleLink("Tasks", "assess/forms/other-controls"),
   ]),
   new Article("Styling basics", [
-    new ArticleLink("Task", "forms/styling-basics")
+    new ArticleLink("Task", "assess/forms/styling-basics")
   ]),
   new Article("Advanced styling", [
-    new ArticleLink("Tasks", "forms/advanced-styling"),
+    new ArticleLink("Tasks", "assess/forms/advanced-styling"),
   ]),
   new Article("Form validation", [
-    new ArticleLink("Tasks", "forms/form-validation"),
+    new ArticleLink("Tasks", "assess/forms/form-validation"),
   ]),
 ]
 
@@ -65,10 +65,8 @@ router.get('/', (req, res, next) => {
   });
 });
 
-router.get("/forms", (req, res, next) => {
-  res.redirect("/assess");
+router.get("/:section/:article", (req, res, next) => {
+  res.render(`${req.params.section}/${req.params.article}`);
 });
-
-router.get("forms/form-structure", assessController.invokeFormStructure);
 
 module.exports = router;

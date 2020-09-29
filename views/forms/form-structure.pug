@@ -1,43 +1,32 @@
-extends layout
+extends ../layout
 
-  append styles
-    style 
-      body {
-        background-color: #fff;
-        color: #333;
-        font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
-        padding: 1em;
-        margin: 0;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-      
-  block content
-    h2 Form structure
-    section
-      h3 Task 1
-      blockquote(cite="")
-        p In this task we want you to structure the provided form features:
-        ol
-          li Separate out the first two and second two form fields into two distinct containers, each with a descriptive legend (use "Personal details" for the first two, and "Comment information" for the second two).
-          li Mark up each text label with an appropriate element so that it is semantically associated with its respective form field.
-          li Add a suitable set of structural elements around the label/field pairs to separate them out.
-      form
-        fieldset
-          legend Personal details
-          div
-            label(for="name") Name:
-            input#name(type="text" name="name")
-          div
-            label(for="age") Age:
-            input#age(type="number" name="age")
-        fieldset
-          legend Comment information
-          div
-            label(for="comment") Comment:
-            input#comment(type="text" name="comment")
-          div
-            label(for="email") Email:
-            input#email(type="email" name="email")
+block content
+  h2 Form structure
+  section
+    h3 Task 1
+    blockquote(cite="")
+      p In this task we want you to structure the provided form features:
+      ol
+        li.
+          Separate out the first two and second two form fields into two distinct containers, each with a descriptive legend (use "Personal details" for the first two, and "Comment information" for the second two).
+        li.
+          Mark up each text label with an appropriate element so that it is semantically associated with its respective form field.
+        li.
+          Add a suitable set of structural elements around the label/field pairs to separate them out.
+    form
+      fieldset
+        legend Personal details
+        div
+          label(for="name") Name:
+          input#name(type="text" name="name")
+        div
+          label(for="age") Age:
+          input#age(type="number" name="age")
+      fieldset
+        legend Comment information
+        div
+          label(for="comment") Comment:
+          input#comment(type="text" name="comment")
+        div
+          label(for="email") Email:
+          input#email(type="email" name="email")

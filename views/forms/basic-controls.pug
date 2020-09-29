@@ -1,87 +1,75 @@
-extends layout
-  append styles
-   style
-    body {
-      background-color: #fff;
-      color: #333;
-      font: 1em / 1.4 Helvetica Neue, Helvetica, Arial, sans-serif;
-      padding: 1em;
-      margin: 0;
-    }
+extends ../layout
 
-    * {
-      box-sizing: border-box;
-    }
-  block content
-    h2 Basic controls
-    section
-      h3 Task 1
-      blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Basic_controls")
-        p This task starts you off nice and gently by asking you to create two #[code &lt;input&gt;] elements, for a user's ID and password, along with a submit button.
-        ol
-          li Create appropriate inputs for user ID and password.
-          li You should also associate them with their text labels semantically.
-          li Create a submit button inside the remaining list item, with button text of "Log in".
-      form
+block content
+  h2 Basic controls
+  section
+    h3 Task 1
+    blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Basic_controls")
+      p This task starts you off nice and gently by asking you to create two #[code &lt;input&gt;] elements, for a user's ID and password, along with a submit button.
+      ol
+        li Create appropriate inputs for user ID and password.
+        li You should also associate them with their text labels semantically.
+        li Create a submit button inside the remaining list item, with button text of "Log in".
+    form
+      ul
+        li
+          label(for="userid") User ID
+          input#userid(type="text" name="userid")
+        li
+          label(for="userpassword") Password
+          input#userpassword(type="password" name="password")
+        li
+          button(type="submit") Log in
+
+  section
+    h3 Task 2
+    blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Basic_controls")
+      p The next task requires you to create working sets of checkboxes and radio buttons, from the provided text labels.
+      ol 
+        li Turn the first #[code &lt;fieldset&gt;]'s contents into a set of radio buttons — you should only be able to select one pony character at once.
+        li Make it so that the first radio button is selected upon page load.
+        li Turn the second #[code &lt;fieldset&gt;]'s content into a set of checkboxes.
+        li Add a couple more hotdog choices of your own.
+    form
+      fieldset
+        legend
         ul
           li
-            label(for="userid") User ID
-            input#userid(type="text" name="userid")
+            label(for="pinkie") Pinkie Pie
+            input#pinkie(type="radio", name="pony" checked)
           li
-            label(for="userpassword") Password
-            input#userpassword(type="password" name="password")
+            label(for="rainbow") Rainbow Dash
+            input#rainbow(type="radio", name="pony")
           li
-            button(type="submit") Log in
-
-    section
-      h3 Task 2
-      blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Basic_controls")
-        p The next task requires you to create working sets of checkboxes and radio buttons, from the provided text labels.
-        ol 
-          li Turn the first #[code &lt;fieldset&gt;]'s contents into a set of radio buttons — you should only be able to select one pony character at once.
-          li Make it so that the first radio button is selected upon page load.
-          li Turn the second #[code &lt;fieldset&gt;]'s content into a set of checkboxes.
-          li Add a couple more hotdog choices of your own.
-      form
-        fieldset
-          legend
-          ul
-            li
-              label(for="pinkie") Pinkie Pie
-              input#pinkie(type="radio", name="pony" checked)
-            li
-              label(for="rainbow") Rainbow Dash
-              input#rainbow(type="radio", name="pony")
-            li
-              label(for="twilight") Twilight Sparkle
-              input#twilight(type="radio", name="pony")
-        fieldset
-          legend
-          ul
-            li
-              input#vegan(type="checkbox", name="vegan")
-              label(for="vegan") Vegan
-            li
-              input#onions(type="checkbox", name="onions")
-              label(for="onions") Onions
-            li
-              input#mustard(type="checkbox", name="mustard")
-              label(for="mustard") Mustard
-            li
-              input#cheese(type="checkbox", name="cheese")
-              label(for="cheese") Cheese
-        button(type="submit") Submit
-    section
-      h3 Task 3
-      blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Basic_controls")
-        p The final task in this set requires you to create a file picker.
-        ol
-          li Create a basic file picker.
-          li Allow the user to pick multiple files at once.
-          li Allow the file picker to accept JPG and PNG images only.
-      form
+            label(for="twilight") Twilight Sparkle
+            input#twilight(type="radio", name="pony")
+      fieldset
+        legend
         ul
           li
-            label(for="gallery-img") Choose gallery images to upload
-            input#gallery-img(type="file", accept="image/jpeg,image/png", name="gallery-img", multiple)
-    
+            input#vegan(type="checkbox", name="vegan")
+            label(for="vegan") Vegan
+          li
+            input#onions(type="checkbox", name="onions")
+            label(for="onions") Onions
+          li
+            input#mustard(type="checkbox", name="mustard")
+            label(for="mustard") Mustard
+          li
+            input#cheese(type="checkbox", name="cheese")
+            label(for="cheese") Cheese
+      button(type="submit") Submit
+  section
+    h3 Task 3
+    blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Basic_controls")
+      p The final task in this set requires you to create a file picker.
+      ol
+        li Create a basic file picker.
+        li Allow the user to pick multiple files at once.
+        li Allow the file picker to accept JPG and PNG images only.
+    form
+      ul
+        li
+          label(for="gallery-img") Choose gallery images to upload
+          input#gallery-img(type="file", accept="image/jpeg,image/png", name="gallery-img", multiple)
+  

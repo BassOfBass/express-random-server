@@ -1,76 +1,76 @@
-extends layout
+extends ../layout
 
-  append styles
-  block content
-    h2 Other controls
-    section
-      h3 Task 1
-      blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Other_controls#Other_controls_1")
-        p In our first "other controls" assessment, we'll get you to create a multi-line text input.
-        ol 
-          li Create a basic multi-line text input.
-          li Associate it semantically with the provided "Comment" label.
-          li Give the input 35 columns, and 10 rows of space in which to add comments.
-          li Give the comments a maximum length of 100 characters.
-      form
-        h2 Enter your comment
-        ul 
-          li 
-            label(for="name") 
-            input#name(type="text", name="name")
-          li 
-            label(for="comment") 
-            textarea#comment(name="comment", cols="35", rows="10", maxlength="100")
-          li 
-            button(type="submit") Submit comment
+append styles
+block content
+  h2 Other controls
+  section
+    h3 Task 1
+    blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Other_controls#Other_controls_1")
+      p In our first "other controls" assessment, we'll get you to create a multi-line text input.
+      ol 
+        li Create a basic multi-line text input.
+        li Associate it semantically with the provided "Comment" label.
+        li Give the input 35 columns, and 10 rows of space in which to add comments.
+        li Give the comments a maximum length of 100 characters.
+    form
+      h2 Enter your comment
+      ul 
+        li 
+          label(for="name") 
+          input#name(type="text", name="name")
+        li 
+          label(for="comment") 
+          textarea#comment(name="comment", cols="35", rows="10", maxlength="100")
+        li 
+          button(type="submit") Submit comment
 
-    section
-      h3 Task 2
-      blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Other_controls#Other_controls_2")
-        p Now it's time to have a go at implementing a drop-down select menu, to allow a user to pick their favourite food from the choices provided.
-        ol 
-          li Create your basic select box structure.
-          li Associate it semantically with the provided "Food" label.
-          li Inside the list, split the choices up into 2 subgroups — "mains" and "snacks".
-      form 
-        ul 
-          li
-            label(for="food") Pick your favorite food:
-            select#food(name="food")
-              optgroup(label="mains")
-                option(value="") Salad
-                option(value="") Curry
-                option(value="") Pizza
-                option(value="") Fajitas
-              optgroup(label="snacks")
-                option(value="") Biscuits
-                option(value="") Crisps
-                option(value="") Fruit
-                option(value="") Breadsticks
-          li
-            button(type="submit") Submit
+  section
+    h3 Task 2
+    blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Other_controls#Other_controls_2")
+      p Now it's time to have a go at implementing a drop-down select menu, to allow a user to pick their favourite food from the choices provided.
+      ol 
+        li Create your basic select box structure.
+        li Associate it semantically with the provided "Food" label.
+        li Inside the list, split the choices up into 2 subgroups — "mains" and "snacks".
+    form 
+      ul 
+        li
+          label(for="food") Pick your favorite food:
+          select#food(name="food")
+            optgroup(label="mains")
+              option(value="") Salad
+              option(value="") Curry
+              option(value="") Pizza
+              option(value="") Fajitas
+            optgroup(label="snacks")
+              option(value="") Biscuits
+              option(value="") Crisps
+              option(value="") Fruit
+              option(value="") Breadsticks
+        li
+          button(type="submit") Submit
 
-    section
-      h3 Task 3
-      blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Other_controls#Other_controls_3")
-        p In our final task of this set, we start with much the same list of food choices. However, this time we want to do things differently:
-        ol 
-          li Create a basic text input that is semantically associated with the provided label.
-          li Put the food choices into a list that can be associated with a form input.
-          li Associate the list with your text input, so that when you type characters, any of the list options that match the character sequence are given in a dropdown list as autocomplete suggestions.
-      form 
-        ul 
-          li 
-            label(for="food") Enter your favorite food:
-            input#food(type="text", name="food" list="foodlist")
-            datalist#foodlist
-              option Salad
-              option Curry
-              option Pizza
-              option Fajitas
-              option Biscuits
-              option Crisps
-              option Fruit
-              option Breadsticks
-          li 
-            button(type="submit") Submit choice
+  section
+    h3 Task 3
+    blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Forms/Test_your_skills:_Other_controls#Other_controls_3")
+      p In our final task of this set, we start with much the same list of food choices. However, this time we want to do things differently:
+      ol 
+        li Create a basic text input that is semantically associated with the provided label.
+        li Put the food choices into a list that can be associated with a form input.
+        li Associate the list with your text input, so that when you type characters, any of the list options that match the character sequence are given in a dropdown list as autocomplete suggestions.
+    form 
+      ul 
+        li 
+          label(for="food") Enter your favorite food:
+          input#food(type="text", name="food" list="foodlist")
+          datalist#foodlist
+            option Salad
+            option Curry
+            option Pizza
+            option Fajitas
+            option Biscuits
+            option Crisps
+            option Fruit
+            option Breadsticks
+        li 
+          button(type="submit") Submit choice
