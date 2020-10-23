@@ -3,17 +3,9 @@
   Only rules applying to base tags go there 
 */
 
-/* 
-  Identical to the selector "html", except that its specificity is higher.
-  Use it for global variable declarations only.
-  var is not supported by IE
-*/
 :root {
-  /* TODO: research on env() which is in Editor's Draft stage as of 2020-09-10 and no IE support */
-
-  /* var() is Candidate Recommendation as of 2020-09-10 and no IE support*/
-
-  /* HSLA Hue */
+  
+  // hue
   --hslh1: 0;
   --hslh2: calc(var(--hslh1) + 60);
   --hslh3: calc(var(--hslh2) + 60);
@@ -21,19 +13,24 @@
   --hslh5: calc(var(--hslh4) + 60);
   --hslh6: calc(var(--hslh5) + 60);
 
-  /* Saturation */
+  // saturation
   --hsls: 50%;
   --hsls-rich: 75%;
   --hsls-poor: 35%;
 
-  /* Lightness */
+  // lightness
   --hsll: 50%;
   --hsll-light: 75%;
   --hsll-dark: 35%;
 
-  /* Opacity */
+  // opacity
   --hslo: 100%;
 
+  /* Actual colours */
+
+  --primary-colour0: hsla(0, 50%, 50%, 100%);
+  --secondary-colour0:  hsla(0, 50%, 50%, 100%);
+  
   --primary-color1: 
     hsla(
       var(--hslh1), 
@@ -90,6 +87,11 @@
       var(--hsll),
       var(--hslo)
     );
+
+  // widths
+  --mobile-width: 360px;
+  --tablet-width: 720px;
+  --desktop-width: 1080px;
 }
 
 // Set base font and the box sizing property 
@@ -111,8 +113,9 @@ html {
 }
 
 body {
-  max-width: 1280px;
-  color: hsl(0, 0%, 20%);
+  max-width: var(--desktop-width);
+  color: var(--primary-color1);
+  background: var(--secondary-color1);
   padding: 0 1em;
   margin: 0 auto;
 }
@@ -129,27 +132,6 @@ section {
   display: block;
 }
 
-header {}
-
-aside {}
-
-footer {}
-
-nav {}
-
-section {}
-
-article {}
-
-/* 
-  No nested <address> element, no heading content (<hgroup>, <h1>, <h2>, <h3>, <h4>, <h5>, <h6>), no sectioning content (<article>, <aside>, <section>, <nav>), and no <header> or <footer> element. 
-*/
-address {}
-
-// Only heading tags permitted inside it 
-hgroup {}
-
-// Set heading font sizes relative to document root 
 h1 {
   font-size: 2.2rem;
   color: var(--primary-color1);
@@ -207,8 +189,11 @@ ol {
   margin: 0;
 }
 
+ul {
+  list-style: none;
+}
+
 li {
-  font-size: 0.95em;
   text-align: inherit;
 }
 /* END Text content */
@@ -529,7 +514,7 @@ optgroup {}
 option {}
 
 button {
-  border: 1px solid gray;
+  border: 1px solid;
   cursor: pointer;
 }
 
@@ -576,13 +561,9 @@ slot {}
 /* END Generic rules */
 
 /* Attribute rules */
-/* 
-  Only selectors by attribute go there 
-*/
+// Only selectors by attribute go there 
 
-/* 
-  external link 
-*/
+// external link
 a[href*="http"] {}
 
 /* local link */
@@ -616,16 +597,12 @@ input[type="radio"] {
   border: none;
 }
 
-/* Not supported by Internet Explorer */
 input[type="color"] {}
 
-/* Not supported by Internet Explorer */
 input[type="date"] {}
 
-/* Not supported by Internet Explorer */
 input[type="datetime-local"] {}
 
-/* Not supported by Internet Explorer */
 input[type="month"] {}
 
 

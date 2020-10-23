@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/BassOfBass/express-random-server#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.17.1",

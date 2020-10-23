@@ -3,8 +3,8 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel='stylesheet', href='/stylesheets/normalize.css')
     block styles
+      link(rel='stylesheet', href='/stylesheets/normalize.css')
       //- optional template style in case complete overwrite is needed
       link(rel='stylesheet', href='/stylesheets/template.css')
 
@@ -13,18 +13,22 @@ html(lang="en")
   body
     a.gskip(href="#maincontent") Skip to content
     header.gheader
-      h1= gheading
-      nav
+      block globalheader
         ul
           li
-            a(href="/") Home
-            a(href="/things") Things
-            a(href="/users") Users
-            a(href="/assess") Tests
+            a.glogo(href="/") Express
+        nav
+          ul
+            li
+              a(href="/things") Things
+              a(href="/users") Users
+              a(href="/assess") Tests
 
     main#maincontent
       block content
 
     aside.gaside aside
 
-    footer.gfooter footer
+    footer.gfooter 
+      block globalfooter
+        footer

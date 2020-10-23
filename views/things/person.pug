@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  form(action="/things/person", method="post")
+  form(action="/things/person", method="POST")
     div 
       label(for="personname") Name:
       input#personname(type="text", name="name")
@@ -12,4 +12,4 @@ block content
       label(for="personnationality") Nationality:
       input#personnationality(type="text", name="nationality")
     div 
-      #[button(type="submit") Create new person ]
+      button(type="submit") Create new person 
