@@ -1,0 +1,11 @@
+extends ../layout
+
+block content
+  if (type == error)
+    h3= message
+  else 
+    h3. 
+      New person,
+      name: #{person.name},
+      age: #{person.age},
+      nationality: #{person.nationality} added!

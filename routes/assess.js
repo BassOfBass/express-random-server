@@ -66,7 +66,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get("/:section/:article", (req, res, next) => {
-  res.render(`${req.params.section}/${req.params.article}`);
+  res.render(`assess/${req.params.section}/${req.params.article}`);
 });
 
 module.exports = router;

@@ -1,4 +1,4 @@
-extends ../layout
+extends ../../layout
 
 append styles
 block content
@@ -16,10 +16,10 @@ block content
       h2 Enter your comment
       ul 
         li 
-          label(for="name") 
+          label(for="name") Name:
           input#name(type="text", name="name")
         li 
-          label(for="comment") 
+          label(for="comment") Comment:
           textarea#comment(name="comment", cols="35", rows="10", maxlength="100")
         li 
           button(type="submit") Submit comment

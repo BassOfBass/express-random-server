@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  form(action="/things/person", method="post")
+    div 
+      label(for="personname") Name:
+      input#personname(type="text", name="name")
+    div 
+      label(for="personage") Age:
+      input#personage(type="text", name="age")
+    div 
+      label(for="personnationality") Nationality:
+      input#personnationality(type="text", name="nationality")
+    div 
+      #[button(type="submit") Create new person ]

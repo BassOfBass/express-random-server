@@ -4,17 +4,24 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
+const multer = require("multer");
+const upload = multer();
+const mongoose = require("mongoose");
 
+const dbuser = require("./miscbin/dbuser");
 const indexRouter = require('./routes/index');
 const thingsRouter = require("./routes/things");
 const usersRouter = require('./routes/users');
 const testsRouter = require("./routes/assess");
 
 const app = express();
+mongoose.connect(dbuser, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+app.locals.gheading = "Express Server"; 
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -26,6 +33,7 @@ app.use(sassMiddleware({
   indentedSyntax: false, // true = .sass and false = .scss
   sourceMap: true,
 }));
+app.use(upload.array());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);

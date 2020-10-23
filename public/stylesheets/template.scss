@@ -41,6 +41,20 @@
       var(--hsll),
       var(--hslo)
     );
+  --secondary-color1:
+    hsla(
+      calc(var(--hslh1) + 30),
+      var(--hsls-poor),
+      var(--hsll),
+      var(--hslo),
+    );
+  --tertiary-color1:
+    hsla(
+      calc(var(--hslh1) - 15),
+      var(--hsls),
+      var(--hsll),
+      var(--hslo),
+    );
   --primary-color2: 
     hsla(
       var(--hslh2), 
@@ -78,9 +92,7 @@
     );
 }
 
-/* 
-  Set base font and the box sizing property 
-*/
+// Set base font and the box sizing property 
 html {
   /* 
     Sets font size property which then becomes a basis for "rem" units 
@@ -91,23 +103,23 @@ html {
   padding: 0;
 }
 
-/* 
-  Inherit box sizing from base to everything else 
-*/
-*, *::before, *::after {
+// Inherit box sizing from base to everything else 
+*, 
+*::before, 
+*::after {
   box-sizing: inherit;
 }
 
 body {
+  max-width: 1280px;
   color: hsl(0, 0%, 20%);
-  padding: 0;
-  margin: 0;
+  padding: 0 1em;
+  margin: 0 auto;
 }
 
 /* Content sectioning */
-/* 
-  Style semantic tags for older browsers 
-*/
+
+// Style semantic tags for older browsers 
 article, 
 aside, 
 footer, 
@@ -134,17 +146,15 @@ article {}
 */
 address {}
 
-/* 
-  Only heading tags permitted inside it 
-*/
+// Only heading tags permitted inside it 
 hgroup {}
 
-/* 
-  Set heading font sizes relative to document root 
-*/
+// Set heading font sizes relative to document root 
 h1 {
   font-size: 2.2rem;
   color: var(--primary-color1);
+  background-color: var(--secondary-color1);
+  border: 2px solid var(--tertiary-color1);
 }
 
 h2 {
@@ -193,7 +203,7 @@ pre {}
 
 ul, 
 ol {
-  padding: 0 1em;
+  padding: 0;
   margin: 0;
 }
 
@@ -389,18 +399,26 @@ textarea {
   */
   min-width: 44px;
   min-height: 44px;
+  width: 100%;
   border-radius: 5px;
   padding: 0.5em;
   /* 
     Large amounts of interactive content — including buttons — placed in close visual proximity to each other should have space separating them. This spacing is beneficial for people who are experiencing motor control issues, who may accidentally activate the wrong interactive content. 
   */
-  margin: 1em;
+  margin: 1em 0;
 }
 
 form {
+  max-width: 360px;
   border: 1px solid #CCC;
   padding: 1em;
   border-radius: 1em;
+
+  & > ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 }
 
 fieldset {
@@ -649,7 +667,10 @@ label + input[type="file"] {
 .gheader {
 
   nav {
-    
+
+    ul {
+      list-style: none;
+    }
   }
 }
 /* END Class rules */
