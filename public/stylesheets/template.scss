@@ -25,12 +25,14 @@
 
   // opacity
   --hslo: 100%;
+  --hslo-beta: 80%;
 
   /* Actual colours */
 
-  --primary-colour0: hsla(0, 50%, 50%, 100%);
-  --secondary-colour0:  hsla(0, 50%, 50%, 100%);
-  
+  // relatively black and white to not go full meme with variable colours
+  --primary-colour0:hsla(0, 0%, 20%, 100%);
+  --secondary-colour0: hsla(0, 0%, 80%, 100%);
+
   --primary-color1: 
     hsla(
       var(--hslh1), 
@@ -96,9 +98,9 @@
 
 // Set base font and the box sizing property 
 html {
-  /* 
-    Sets font size property which then becomes a basis for "rem" units 
-  */
+  // prep fpr sticky footer
+  height: 100%;
+  // Sets font size property which then becomes a basis for "rem" units 
   font: 16px Helvetica, Arial, sans-serif;
   box-sizing: border-box;
   margin: 0;
@@ -113,14 +115,25 @@ html {
 }
 
 body {
-  max-width: var(--desktop-width);
-  color: var(--primary-color1);
-  background: var(--secondary-color1);
-  padding: 0 1em;
-  margin: 0 auto;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  min-height: 100%;
+  color: var(--primary-colour0);
+  background: var(--secondary-colour0);
+  padding: 0;
+  margin: 0;
 }
 
 /* Content sectioning */
+main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  max-width: var(--desktop-width);
+  margin: 1em auto;
+}
 
 // Style semantic tags for older browsers 
 article, 
@@ -167,7 +180,7 @@ h6 {
 
 /* Text content */
 
-main {}
+
 
 // Set consistent line height across several text elements 
 p,
@@ -176,12 +189,6 @@ dt,
 dd {
   line-height: 1.5;
 }
-
-dl {}
-dt {}
-dd {}
-
-pre {}
 
 ul, 
 ol {
@@ -203,8 +210,8 @@ li {
 a {
   outline: none;
   text-decoration: none;
-  padding: 2px 1px 0;
-  &:link {}
+  
+  // &:link {}
   
   /* 
     Only the following styles can be applied to visited links: 
@@ -218,12 +225,10 @@ a {
   
     In addition, even for the above styles, you won't be able to change the transparency between unvisited and visited links, as you otherwise would be able to using rgba(), hsla(), or the transparent keyword.
   */
-  &:visited {}
+  // &:visited {}
   
-  /* 
-    Combine focus and hover together. 
-  */
-  &:focus,
+  // &:focus {}
+
   &:hover {
     /* 
       border-bottom has better styling options than than text-decoration 
@@ -233,122 +238,82 @@ a {
     cursor: pointer;
   }
   
-  &:active {}
+  // &:active {}
 }
 
 
-abbr {}
-dfn {}
-b {}
+// abbr {}
+// dfn {}
+// b {}
 
 /* Not supported in Safari and IE */
-bdi {}
-bdo {}
+// bdi {}
+// bdo {}
 
-br {}
-code {}
-cite {}
+// br {}
+// code {}
+// cite {}
 
 /* Not supported in IE */
-data {}
+// data {}
 
 /* 
   Can be nested, with each level of nesting indicating a greater degree of emphasis. 
 */
-em {}
-i {}
+// em {}
+// i {}
 
 /* 
   May be nested in various combinations with the <samp> (Sample Output) element to represent various forms of input or output based on visual cues. 
 */
-kbd {}
+// kbd {}
 
-mark {}
-q {}
-ruby {}
-rt {}
-rb {}
-rp {}
+// mark {}
+// q {}
+// ruby {}
+// rt {}
+// rb {}
+// rp {}
 
 /* Only supported in Firefox */
-rtc {}
+// rtc {}
 
-rbc {}
-s {}
-samp {}
-small {}
-span {}
-strong {}
-sub {}
-sup {}
+// rbc {}
+// s {}
+// samp {}
+// small {}
+// span {}
+// strong {}
+// sub {}
+// sup {}
 
 /* 
   If the element does not have a datetime attribute, it must not have any element descendants, and the datetime value is the element’s child text content. 
 */
 /* Not supported by Internet Explorer */
-time {}
+// time {}
 
 u {
   text-decoration: #f00 wavy underline;
 }
 
 /* Not supported in IE 7+ */
-wbr {}
+// wbr {}
 
 /* Demarcating edits */
-del {}
-ins {}
+// del {}
+// ins {}
 /* END Demarcating edits */
 
 /* END Inline text semantics */
 
 /* Image and multimedia */
-
-img,
-picture,
-audio,
-video {
-  display: block;
-}
-
-img,
-source {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Not supported by Internet Explorer */
-picture {}
-
-source {}
-
-picture > img,
-picture > source {
-  object-position: center;
-  object-fit: contain;
-}
-audio {}
-video {}
-
-track {}
-
-map {}
-
-// used only within a <map> element
-area {}
 /* END Image and multimedia */
 
 /* Embedded content */
-embed {}
-iframe {}
-object {}
-param {}
 /* END Embedded content */
 
 /* Scripting */
-canvas {}
-noscript {}
-script {}
 /* END Scripting */
 
 /* Table content */
@@ -362,16 +327,6 @@ td {
   padding: 0.25em;
   text-align: start;
 }
-table {}
-caption {}
-colgroup {}
-col {}
-thead {}
-th {}
-tbody {}
-tr {}
-td {}
-tfoot {}
 /* END Table content */
 
 /* Forms */
@@ -383,8 +338,9 @@ textarea {
     Interactive elements such as form input should provide an area large enough that it is easy to activate them. This helps a variety of people, including people with motor control issues and people using non-precise forms of input such as a stylus or fingers. A minimum interactive size of 44×44 CSS pixels is recommended. 
   */
   min-width: 44px;
-  min-height: 44px;
   width: 100%;
+  max-width: var(--mobile-width);
+  min-height: 44px;
   border-radius: 5px;
   padding: 0.5em;
   /* 
@@ -394,16 +350,10 @@ textarea {
 }
 
 form {
-  max-width: 360px;
-  border: 1px solid #CCC;
+  max-width: var(--mobile-width);
+  border: 1px solid var(--primary-colour0);
   padding: 1em;
   border-radius: 1em;
-
-  & > ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
 }
 
 fieldset {
@@ -429,100 +379,98 @@ input {
   /* 
     Any currently enabled element that can be activated (selected, clicked on, typed into, etc.) or accept focus and also has a disabled state, in which it can't be activated or accept focus. 
   */
-  &:enabled {}
+  // &:enabled {}
 
   // Element not editable by the user 
-  &:read-only {}
+  // &:read-only {}
   
   // Element that is editable by the user. 
-  &:read-write {}
+  // &:read-write {}
   
   /* 
     Element that is currently displaying placeholder text, including <input> and <textarea> elements with the placeholder attribute present that has, as of yet, no value. 
   */
-  &:placeholder-shown {}
+  // &:placeholder-shown {}
   
   /* 
     Form elements that are the default in a group of related elements. Matches checkbox and radio input types that were checked on page load or render. 
   */
-  &:default {}
+  // &:default {}
   
   /* 
     Matches "checkbox" and "radio" input types that are currently checked (and the <option> in a <select> that is currently selected). 
   */
-  &:checked {}
+  // &:checked {}
   
   /* 
     "checkbox" elements whose indeterminate property is set to true by JavaScript, "radio" elements, when all radio buttons with the same name value in the form are unchecked, and <progress> elements in an indeterminate state 
   */
-  &:indeterminate {}
+  // &:indeterminate {}
   
   /* 
     Form controls that can have constraint validation applied and are currently valid. 
   */
-  &:valid {}
+  // &:valid {}
   
   /* 
     Form controls that have constraint validation applied and are currently not valid. Matches a form control whose value doesn't match the constraints set on it by it's attributes, such as "required", "pattern", "step" and "max". 
   */
-  &:invalid {}
+  // &:invalid {}
   
   /* 
     A non-empty input whose current value is within the range limits specified by the "min" and "max" attributes and the "step". 
   */
-  &:in-range {}
+  // &:in-range {}
   
   /* 
     A non-empty input whose current value is NOT within the range limits specified by the "min" and "max" attributes or does not adher to the "step" constraint. 
   */
-  &:out-of-range {}
+  // &:out-of-range {}
   
   /* 
     <input>, <select>, or <textarea> element that has the required attribute set on it. Only matches elements that can be required. The attribute included on a non-requirable element will not make for a match. 
   */
-  &:required {
-  }
+  // &:required {}
   
   /* 
     <input>, <select>, or <textarea> element that does NOT have the required attribute set on it. Does not match elements that can't be required. 
   */
-  &:optional {}
+  // &:optional {}
   
   /* 
     <input> and <textarea> elements that currently have no value. 
   */
-  &:blank {}
+  // &:blank {}
   
   /* 
     Similar to :invalid, but is activated on blur. Matches invalid input but only after the user interaction, such as by focusing on the control, leaving the control, or attempting to submit the form containing the invalid control. 
   */
-  input:user-invalid {}
+  // &:user-invalid {}
   
   /* 
     Only the subset of CSS properties that apply to the ::first-line pseudo-element can be used in a rule using ::placeholder in its selector. 
   */
-  input::placeholder {}
-}
+  // &::placeholder {}
 
-output {}
-textarea {}
-meter {}
-progress {}
-datalist {}
-select {}
-optgroup {}
-option {}
+  /* 
+    Any currently disabled element that has an enabled state, meaing it otherwise could be activated (selected, clicked on, typed into, etc.) or accept focus were it not disabled. 
+  */
+  // &:disabled {}
+}
 
 button {
+  color: var(--primary-colour0);
+  background-color: var(--secondary-colour0);
   border: 1px solid;
   cursor: pointer;
-}
-
-button:hover {}
-button:active {
-  box-shadow: 
-    inset -2px -2px 3px rgba(255, 255, 255, .6),
-    inset 2px 2px 3px rgba(0, 0, 0, .6);
+  
+  // &:hover {}
+  // &:focus {}
+  &:active {
+    box-shadow: 
+      inset -2px -2px 3px rgba(255, 255, 255, .6),
+      inset 2px 2px 3px rgba(0, 0, 0, .6);
+  }
 }
 
 input:focus,
@@ -540,22 +488,13 @@ select:disabled {
   cursor: not-allowed;
 }
 
-/* 
-  Any currently disabled element that has an enabled state, meaing it otherwise could be activated (selected, clicked on, typed into, etc.) or accept focus were it not disabled. 
-*/
-input:disabled {}
+
 /* END Forms */
 
 /* Interactive elements */
-summary {}
-details {}
-dialog {}
-menu {}
 /* END Interactive elements */
 
 /* Web components */
-template {}
-slot {}
 /* END Web components */
 
 /* END Generic rules */
@@ -563,14 +502,17 @@ slot {}
 /* Attribute rules */
 // Only selectors by attribute go there 
 
-// external link
-a[href*="http"] {}
+// external unprotected link
+// a[href*="http"] {}
+
+// external protected link
+// a[href*="https"] {}
 
 /* local link */
 a[href^="#"] {
   color: hsla(270, 50%, 60%, 100%);
 
-  &:link {}
+  // &:link {}
 
   // No point for visited state 
   // &:visited {}
@@ -591,19 +533,23 @@ a[href^="#"] {
 
 /* END local link */
 
-input[type="checkbox"], 
-input[type="radio"] {
-  width: auto;
-  border: none;
+input {
+
+  &[type="checkbox"],
+  &[type="radio"] {
+    width: auto;
+    border: none;
+  }
+
+  // &[type="color"] {}
+  
+  // &[type="date"] {}
+  
+  // &[type="datetime-local"] {}
+  
+  // &[type="month"] {}
+
 }
-
-input[type="color"] {}
-
-input[type="date"] {}
-
-input[type="datetime-local"] {}
-
-input[type="month"] {}
 
 
 /* 
@@ -636,18 +582,84 @@ label + input[type="file"] {
   }
 }
 
-.gskip:focus {
-  
-}
-
 // global header
 .gheader {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--primary-colour0);
+  padding: 0 1em;
 
-  nav {
+  // top part
+  & .gtop {
+    display: inline-flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
 
-    ul {
-      list-style: none;
+  // logo link
+  & .glogo {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    // &:link {}
+    // &:visited {}
+    // &:focus {}
+    // &:hover {}
+    // &:active {}
+  }
+
+  // global search
+  & .gsearch {
+    display: flex;
+    flex-flow: row nowrap;
+    border: none;
+    padding: 0;
+    margin: 0;
+
+    // input container
+    & > div:first-child {
+      flex: 1 1 auto;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
     }
+
+    // submit button container
+    & > div:last-child {
+      flex: 0 0 auto;
+    }
+  }
+
+  // nav bar
+  & .gnav {
+
+    & > ul {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+    }
+  }
+}
+
+// global footer
+.gfooter {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-top: 2px solid var(--primary-colour0);
+  padding: 1em;
+
+  // dark/light mode switcher
+  & .glightswitch {
+    width: auto;
+    border-radius: 50%;
+    padding: 0.5em;
+    margin: 0;
   }
 }
 /* END Class rules */

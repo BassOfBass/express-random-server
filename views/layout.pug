@@ -3,32 +3,47 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
     block styles
       link(rel='stylesheet', href='/stylesheets/normalize.css')
       //- optional template style in case complete overwrite is needed
       link(rel='stylesheet', href='/stylesheets/template.css')
 
+    block scripts
+      script(src="/js/main.js" defer)
     title= title
 
   body
     a.gskip(href="#maincontent") Skip to content
     header.gheader
       block globalheader
-        ul
+        ul.gtop
           li
-            a.glogo(href="/") Express
-        nav
+            a.glogo(href="/") Express Server
+          li
+            form.gsearch
+              div
+                label(for="globalsearch") Search:
+                input#globalsearch(type="search", name="search")
+              div
+                button(type="submit") Go!
+        nav.gnav
           ul
             li
               a(href="/things") Things
+            li
               a(href="/users") Users
+            li
               a(href="/assess") Tests
 
     main#maincontent
       block content
 
-    aside.gaside aside
+    block globalasides
+      aside.gaside aside
 
     footer.gfooter 
       block globalfooter
-        footer
+        address global footer
+        button.glightswitch(type="button") 
+          | Dark #[br] Light
