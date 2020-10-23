@@ -1,7 +1,14 @@
+// prevents hsl() and hsla() values from being converted to RGB on SASS compilation
+// code is stolen from https://github.com/meduzen/true-hsl.scss because I don't want to add yet another dependency just for 2 functions
+@function hsl($args...) {
+  @return #{'hsl(#{$args})'};
+}
+
+@function hsla($args...) {
+  @return hsl($args...);
+}
 /* Generic rules */
-/* 
-  Only rules applying to base tags go there 
-*/
+// only rules applying to base tags and their pseudo-selectors/elements go there
 
 :root {
   
@@ -30,8 +37,8 @@
   /* Actual colours */
 
   // relatively black and white to not go full meme with variable colours
-  --primary-colour0:hsla(0, 0%, 20%, 100%);
-  --secondary-colour0: hsla(0, 0%, 80%, 100%);
+  --primary-colour0:hsl(0, 0%, 15%);
+  --secondary-colour0: hsl(0, 0%, 85%);
 
   --primary-color1: 
     hsla(
@@ -89,11 +96,27 @@
       var(--hsll),
       var(--hslo)
     );
+  // TODO: rework into more granular scheme
+  // links
+  --base-anchor-colour: 120;
+  --primary-anchor-colour: hsl(120, 80%, 40%);
+  --secondary-anchor-colour: hsl(120, 100%, 95%);
+  // local links
+  --base-local-anchor-colour: 270;
+  --primary-local-anchor-colour: hsl(270, 80%, 50%);
+  --secondary-local-anchor-colour: hsl(270, 100%, 95%);
 
   // widths
   --mobile-width: 360px;
   --tablet-width: 720px;
   --desktop-width: 1080px;
+
+  // durations for transition and transform properties
+  --global-duration: 0.5s;
+  --duration-none: 0;
+  --duration-fast: 0.25s;
+  --duration-norm: 0.5s;
+  --duration-slow: 1s;
 }
 
 // Set base font and the box sizing property 
@@ -150,31 +173,43 @@ h1 {
   color: var(--primary-color1);
   background-color: var(--secondary-color1);
   border: 2px solid var(--tertiary-color1);
+  padding: 0;
+  margin: 0;
 }
 
 h2 {
   font-size: 2rem;
   color: var(--primary-color2);
+  padding: 0;
+  margin: 0;
 }
 
 h3 {
   font-size: 1.8rem;
   color: var(--primary-color3);
+  padding: 0;
+  margin: 0;
 }
 
 h4 {
   font-size: 1.6rem;
   color: var(--primary-color4);
+  padding: 0;
+  margin: 0;
 }
 
 h5 {
   font-size: 1.4rem;
   color: var(--primary-color5);
+  padding: 0;
+  margin: 0;
 }
 
 h6 {
   font-size: 1.2rem;
   color: var(--primary-color6);
+  padding: 0;
+  margin: 0;
 }
 /* END Content sectioning */
 
@@ -208,10 +243,15 @@ li {
 /* Inline text semantics */
 
 a {
-  outline: none;
   text-decoration: none;
-  
-  // &:link {}
+  outline: none;
+  transition: all var(--global-duration);
+  padding: 0.25em;
+
+  &:link {
+    color: hsl(var(--base-anchor-colour), 80%, 40%);
+    text-shadow: 0 0 1px var(--primary-colour0);
+  }
   
   /* 
     Only the following styles can be applied to visited links: 
@@ -225,11 +265,14 @@ a {
   
     In addition, even for the above styles, you won't be able to change the transparency between unvisited and visited links, as you otherwise would be able to using rgba(), hsla(), or the transparent keyword.
   */
-  // &:visited {}
+  &:visited {
+    color: hsl(var(--base-anchor-colour), 60%, 30%);
+  }
   
-  // &:focus {}
-
+  &:focus,
   &:hover {
+    color: hsl(var(--base-anchor-colour), 90%, 40%);
+    background-color: hsl(var(--base-anchor-colour), 100%, 95%);
     /* 
       border-bottom has better styling options than than text-decoration 
       no color specified means it will adopt font color
@@ -238,7 +281,10 @@ a {
     cursor: pointer;
   }
   
-  // &:active {}
+  &:active {
+    color: hsl(var(--base-anchor-colour), 100%, 95%);
+    background-color: hsl(var(--base-anchor-colour), 90%, 40%);
+  }
 }
 
 
@@ -510,24 +556,22 @@ select:disabled {
 
 /* local link */
 a[href^="#"] {
-  color: hsla(270, 50%, 60%, 100%);
-
-  // &:link {}
-
-  // No point for visited state 
-  // &:visited {}
+  
+  // No point for separate visited state
+  &:link,
+  &:visited {
+    color: hsl(var(--base-anchor-colour), 80%, 40%);
+  }
 
   &:focus,
   &:hover {
-    color: hsl(270, 70%, 50%);
-    background-color: ivory;
-    border-bottom: 1px solid;
+    color: hsl(var(--base-anchor-colour), 80%, 50%);
+    background-color: hsl(var(--base-anchor-colour), 100%, 95%);
   }
 
   &:active {
-    color: ivory;
-    background-color: hsl(270, 70%, 50%);
-    border-bottom: 1px solid;
+    color: hsl(var(--base-anchor-colour), 100%, 95%);
+    background-color: hsl(var(--base-anchor-colour), 80%, 50%);
   }
 }
 
@@ -604,9 +648,12 @@ label + input[type="file"] {
     font-size: 2rem;
     font-weight: bold;
     text-transform: uppercase;
+    // shadow so it wouldn't blend with bg colour
+    text-shadow: 0 0 2px var(--primary-colour0);
+    
     // &:link {}
     // &:visited {}
-    // &:focus {}
+    // &:focus,
     // &:hover {}
     // &:active {}
   }

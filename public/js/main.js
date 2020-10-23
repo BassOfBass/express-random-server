@@ -1,6 +1,20 @@
 ;(() => {
   "use strict";
 
+  /** The color settings for the whole document. */
+  const colorTheme = {
+    basic: {},
+
+    anchors: { basic: "", local: ""},
+
+    buttons: { 
+      default: "", 
+      positive: "", 
+      negative: "", 
+      submit: "" 
+    },
+  }
+
   const root = document.documentElement;
 
   /**
@@ -20,7 +34,9 @@
   /**
    * TODO: make it stick between page reloads by using `localStorage`.
    * 
-   * TODO: switch all related colour pairs.
+   * TODO: switch all related colour pairs:
+   * - primary colours from 0 to 6
+   * - anchors and local anchors 
    */
   function switchLights() {
     let primaryColour = getComputedStyle(root).getPropertyValue("--primary-colour0");

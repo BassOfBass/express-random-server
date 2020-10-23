@@ -2,10 +2,18 @@ extends layout
 
 block content
   section
-    h2= section
+    h2 #{section}
+
+    nav
+      ul
+        each article in articles
+          //- TODO: add `id`s to the articles
+          li 
+            a(href=`#${article.heading}`) #{article.heading}
+
     each article in articles
       article
-        h3= article.heading
+        h3 #{article.heading}
         each link in article.links
           p #[a(href=link.href)= link.title]
         
