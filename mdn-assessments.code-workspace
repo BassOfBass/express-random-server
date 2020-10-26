@@ -12,6 +12,7 @@
         "color": "#f54100",
         "column": 90
       }
-    ]
+    ],
+    "files.autoSave": "onWindowChange",
 	}
 }

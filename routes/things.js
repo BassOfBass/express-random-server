@@ -1,7 +1,8 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+import Person from "../models/Person.js";
 
-const Person = require("../models/Person");
+const router = express.Router();
+const Users = [];
 
 router.use("/", (req, res, next) => {
   console.log(`A request for things received at + ${Date.now()}`);
@@ -10,6 +11,11 @@ router.use("/", (req, res, next) => {
 
 router.get('/', (req, res, next) => {
   res.render("things");
+});
+
+router.get("/clear-cookie", (req, res) => {
+  res.clearCookie('name');
+  res.send('cookie foo cleared');
 });
 
 router.get("/first-template", (req, res) => {
@@ -21,6 +27,56 @@ router.get("/dynamic-view", (req, res) => {
     name: "TutorialsPoint", 
     url: "http://www.tutorialspoint.com"
   });
+});
+
+router.get("/signup", (req, res) => {
+  res.render("things/signup");
+});
+
+router.post("/signup", (req, res) => {
+
+  if (!req.body.id || !req.body.password) {
+    res.status("400");
+    res.send("Invalid details!");
+  } else {
+    Users.filter((user) => {
+
+      if (user.id === req.body.id) {
+        res.render("things/signup", {
+          title: "Signup",
+          message: "User Already Exists! Login or choose another user id"
+        });
+      }
+
+    });
+
+    const newUser = { id: req.body.id, password: req.body.password };
+    
+    Users.push(newUser);
+    req.session.user = newUser;
+    res.redirect("/protected-page");
+  }
+});
+
+/**
+ * 
+ * @param {express.Request} req 
+ * @param {express.Response} res
+ * @param {express.NextFunction} next
+ */
+function checkSignIn(req, res, next) {
+
+  if (req.session.user) {
+    next(); // If session exists, proceed to page
+  } else {
+    let err = new Error("Not logged in!");
+    next(err); // Error, trying to access unauthorized page!
+  }
+
+}
+
+router.get("/protected-page", checkSignIn, (req, res) => {
+  res.render("things/protected-page", { title: "Protected page", id: req.session.id });
 });
 
 router.get("/login-view", (req, res, next) => {
@@ -93,7 +149,27 @@ router.get("/people", (req, res) => {
 });
 
 router.put("/people/:id", (req, res) => {
-  
+  Person.findByIdAndUpdate(req.params.id, req.body, (err, response) => {
+
+    if (err) {
+      res.json({ message: `Error in updating person with id ${req.params.id}` });
+    }
+
+    res.json(response);
+
+  });
+});
+
+router.delete("/people/:id", (req, res) => {
+  Person.findByIdAndRemove(req.params.id, (err, response) => {
+
+    if (err) {
+      res.json({ message: `Error in deleting record id ${req.params.id}` });
+    } else {
+      res.json({message: `Person with id ${req.params.id} removed.`})
+    }
+
+  });
 });
 
 router.get("/:id([0-9]{5})", (req, res) => {
@@ -104,4 +180,4 @@ router.get("/:name/:id", (req, res) => {
   res.send(`id: ${req.params.id} and name: ${req.params.name}`);
 });
 
-module.exports = router;
+export default router;

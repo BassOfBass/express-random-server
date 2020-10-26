@@ -2,11 +2,12 @@
   "name": "mdn-assessments",
   "version": "0.0.1",
   "description": "server for something",
+  "type": "module",
   "main": "app.js",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "server": "nodemon ./bin/www",
+    "server": "nodemon -r dotenv/config ./bin/www & ",
     "dev": "SET DEBUG=mdn-assessments:* & npm run server"
   },
   "repository": {
@@ -28,7 +29,10 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "helmet": "^4.1.1",
     "http-errors": "~1.6.3",
     "mongoose": "^5.10.7",
     "morgan": "~1.9.1",

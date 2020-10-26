@@ -1,7 +1,6 @@
 // Forms section
 
 /**
- * 
  * @param {*} req 
  * @param {*} res 
  */
@@ -10,7 +9,6 @@ function invokeFormStructure(req, res) {
 };
 
 /**
- * 
  * @param {*} req 
  * @param {*} res 
  */
@@ -19,7 +17,6 @@ function invokeBasicControls(req, res) {
 };
 
 /**
- * 
  * @param {*} req 
  * @param {*} res 
  */
@@ -28,7 +25,6 @@ function invokeHTML5Controls(req, res) {
 };
 
 /**
- * 
  * @param {*} req 
  * @param {*} res 
  */
@@ -37,7 +33,6 @@ function invokeOtherControls(req, res) {
 };
 
 /**
- * 
  * @param {*} req 
  * @param {*} res 
  */
@@ -46,7 +41,6 @@ function invokeStylingBasics(req, res) {
 };
 
 /**
- * 
  * @param {*} req 
  * @param {*} res 
  */
@@ -55,7 +49,6 @@ function invokeAdvancedStyling(req, res) {
 };
 
 /**
- * 
  * @param {*} req 
  * @param {*} res 
  */
@@ -63,7 +56,7 @@ function invokeFormValidation(req, res) {
   res.render("/forms/form-validation");
 };
 
-module.exports = {
+export default {
   invokeFormStructure,
   invokeBasicControls,
   invokeHTML5Controls,

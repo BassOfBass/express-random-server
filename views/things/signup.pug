@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  section
+    if (message)
+      h1 #{message}
+
+    form(action="/things/signup", method="POST")
+      div
+        label(for="thingid") User ID:
+        input#thingid(type="text", name="id" required)
+      div
+        label(for="thingpassword") Password
+        input#thingpassword(type="text", name="password" required)
+      div
+        button(type="submit") Sign me up!

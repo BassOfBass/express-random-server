@@ -1,40 +1,52 @@
-const express = require('express');
-const createError = require('http-errors');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const sassMiddleware = require('node-sass-middleware');
-const multer = require("multer");
-const upload = multer();
-const mongoose = require("mongoose");
+import express from 'express';
+import createError from 'http-errors';
+import { fileURLToPath } from "url";
+import { join, dirname } from 'path';
+import helmet from "helmet";
+import cookieParser from 'cookie-parser';
+import session from "express-session";
+import logger from 'morgan';
+import sassMiddleware from 'node-sass-middleware';
+import multer from "multer";
+import mongoose from "mongoose";
+import indexRouter from './routes/index.js';
+import thingsRouter from "./routes/things.js";
+import usersRouter from './routes/users.js';
+import testsRouter from "./routes/assess.js";
 
-const dbuser = require("./miscbin/dbuser");
-const indexRouter = require('./routes/index');
-const thingsRouter = require("./routes/things");
-const usersRouter = require('./routes/users');
-const testsRouter = require("./routes/assess");
+// https://nodejs.org/api/esm.html#esm_no_require_exports_module_exports_filename_dirname
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename);
 
 const app = express();
-mongoose.connect(dbuser, { useNewUrlParser: true, useUnifiedTopology: true });
+const upload = multer();
+// mongoose stuff
+mongoose.connect(process.env.MONGOUSER, { useNewUrlParser: true, useUnifiedTopology: true, });
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.locals.gheading = "Express Server"; 
-
 app.use(logger('dev'));
+
+// https://helmetjs.github.io
+// > helmet.hidePoweredBy()
+// > If you're using Express, this middleware will work, but you should use app.disable("x-powered-by") instead.
+app.disable("x-powered-by");
+app.use(helmet({ hidePoweredBy: false }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({ secret: "big-secret_alright", name: "leRedditFaec" }));
 app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
+  src: join(__dirname, 'public'),
+  dest: join(__dirname, 'public'),
   indentedSyntax: false, // true = .sass and false = .scss
   sourceMap: true,
 }));
 app.use(upload.array());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/things', thingsRouter);
@@ -57,4 +69,4 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-module.exports = app;
+export default app;

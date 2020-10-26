@@ -1,18 +1,19 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+import assessController from "../controllers/assessController.js";
 
-const assessController = require("../controllers/assessController");
+const router = express.Router();
 
 /**
  * Represents an article in test area.
  */
 class Article {
   /**
-   * 
+   * @param {string} id
    * @param {string} heading 
    * @param {ArticleLink[]} links 
    */
-  constructor(heading, links) {
+  constructor(id, heading, links) {
+    this.id = id;
     this.heading = heading;
     this.links = links;
   }
@@ -34,25 +35,25 @@ class ArticleLink {
 }
 
 const ARTICLES = [
-  new Article("Form structure", [
+  new Article("formstruc", "Form structure", [
     new ArticleLink("Task 1", "assess/forms/form-structure"),
   ]),
-  new Article("Basic controls", [
+  new Article("formbasic", "Basic controls", [
     new ArticleLink("Task 1", "assess/forms/basic-controls"),
   ]),
-  new Article("HTML5 controls", [
+  new Article("formhtml5", "HTML5 controls", [
     new ArticleLink("Task 1", "assess/forms/html5-controls"),
   ]),
-  new Article("Other controls", [
+  new Article("formother", "Other controls", [
     new ArticleLink("Tasks", "assess/forms/other-controls"),
   ]),
-  new Article("Styling basics", [
+  new Article("formstyling", "Styling basics", [
     new ArticleLink("Task", "assess/forms/styling-basics")
   ]),
-  new Article("Advanced styling", [
+  new Article("formadvstyling", "Advanced styling", [
     new ArticleLink("Tasks", "assess/forms/advanced-styling"),
   ]),
-  new Article("Form validation", [
+  new Article("formvalid", "Form validation", [
     new ArticleLink("Tasks", "assess/forms/form-validation"),
   ]),
 ]
@@ -69,4 +70,4 @@ router.get("/:section/:article", (req, res, next) => {
   res.render(`assess/${req.params.section}/${req.params.article}`);
 });
 
-module.exports = router;
+export default router;
