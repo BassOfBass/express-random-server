@@ -9,13 +9,15 @@ import logger from 'morgan';
 import sassMiddleware from 'node-sass-middleware';
 import multer from "multer";
 import mongoose from "mongoose";
+
 import indexRouter from './routes/index.js';
 import thingsRouter from "./routes/things.js";
 import usersRouter from './routes/users.js';
 import testsRouter from "./routes/assess.js";
+import moviesRouter from "./routes/movies.js";
 
 // https://nodejs.org/api/esm.html#esm_no_require_exports_module_exports_filename_dirname
-const __filename = fileURLToPath(import.meta.url)
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
@@ -48,10 +50,12 @@ app.use(sassMiddleware({
 app.use(upload.array());
 app.use(express.static(join(__dirname, 'public')));
 
+// routing
 app.use('/', indexRouter);
 app.use('/things', thingsRouter);
 app.use('/users', usersRouter);
 app.use('/assess', testsRouter);
+app.use("/movies", moviesRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

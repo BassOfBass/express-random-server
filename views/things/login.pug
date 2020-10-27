@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+  if (message)
+    form(action="/things/login", method="POST")
+      div
+        label(for="userid") User ID:
+        input#userid(type="text" name="id")
+      div
+        label(for="userpass") Password:
+        input#userpass(type="password", name="password")
+      div
+        button(type="submit") Log in

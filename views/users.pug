@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  section
+    h1 Userlist
+
+    ul
+      each user in users
+        li #{user.name} #{user.role}
+          

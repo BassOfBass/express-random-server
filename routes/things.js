@@ -54,7 +54,7 @@ router.post("/signup", (req, res) => {
     
     Users.push(newUser);
     req.session.user = newUser;
-    res.redirect("/protected-page");
+    res.redirect("protected-page");
   }
 });
 
@@ -77,6 +77,38 @@ function checkSignIn(req, res, next) {
 
 router.get("/protected-page", checkSignIn, (req, res) => {
   res.render("things/protected-page", { title: "Protected page", id: req.session.id });
+});
+
+router.get("/login", (req, res) => {
+  res.render("things/login", { title: "Signup" });
+});
+
+router.post("/login", (req, res) => {
+  console.log(Users);
+
+  if (!req.body.id || !req.body.password) {
+    res.render("things/login", {message: "Please enter both id and password"})
+  } else {
+    Users.filter((user) => {
+
+      if (user.id === req.body.id && user.password === req.body.password) {
+        req.session.user = user;
+        res.redirect("protected-page");
+      }
+
+    });
+
+    res.render("things/login", { message: "Invalid credentials!" });
+  }
+
+});
+
+router.get("/logout", (req, res) => {
+  req.session.destroy(() => {
+    console.log("user logged out")
+  });
+
+  res.redirect("/login");
 });
 
 router.get("/login-view", (req, res, next) => {
