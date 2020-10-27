@@ -6,7 +6,7 @@ import helmet from "helmet";
 import cookieParser from 'cookie-parser';
 import session from "express-session";
 import logger from 'morgan';
-import sassMiddleware from 'node-sass-middleware';
+import lessMiddleware from "less-middleware";  
 import multer from "multer";
 import mongoose from "mongoose";
 
@@ -41,12 +41,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({ secret: "big-secret_alright", name: "leRedditFaec" }));
-app.use(sassMiddleware({
-  src: join(__dirname, 'public'),
-  dest: join(__dirname, 'public'),
-  indentedSyntax: false, // true = .sass and false = .scss
-  sourceMap: true,
-}));
+app.use(lessMiddleware(join(__dirname, "public")));
 app.use(upload.array());
 app.use(express.static(join(__dirname, 'public')));
 
