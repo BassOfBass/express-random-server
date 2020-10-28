@@ -1,0 +1,19 @@
+extends ../layout
+
+append scripts
+  script(src=`${scriptHREF}` defer)
+
+block content
+  section
+    form#signup(action=`${formHREF}`, method="POST")
+      div
+        label(for="username") Name:
+        input#username(type="text", name="name")
+      div
+        label(for="usermail") Email:
+        input#usermail(type="email", name="email")
+      div
+        label(for="userpass") Password:
+        input#userpass(type="password", name="password")
+      div
+        button(type="submit") Sign up

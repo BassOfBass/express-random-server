@@ -1,8 +1,14 @@
 doctype html
 html(lang="en")
   head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    block meta
+      meta(charset="UTF-8")
+      meta(http-equiv="X-UA-Compatible", content="ie=edge")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      meta(name="author", content="BassOfBass")
+      meta(name="description", content="The simple Node.js server made with Express framework.")
+
+    link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
 
     block styles
       link(rel='stylesheet', href='/stylesheets/normalize.css')
@@ -11,6 +17,7 @@ html(lang="en")
 
     block scripts
       script(src="/js/main.js" defer)
+
     title #{title}
 
   body
@@ -36,7 +43,7 @@ html(lang="en")
             li
               a(href="/assess") Tests
             li
-              a(href="/signup") Sign Up
+              a(href="users/signup") Sign Up
 
     main#maincontent
       block content

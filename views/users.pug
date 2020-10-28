@@ -6,5 +6,5 @@ block content
 
     ul
       each user in users
-        li #{user.name} #{user.role}
+        li #[a(href=`${user.url}`) #{user.name}] #{user.role}
           
