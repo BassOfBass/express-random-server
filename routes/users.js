@@ -39,7 +39,7 @@ router.get("/signup", async(req, res, next) => {
 // user signup credentials
 // TODO: add validation, sanitaion and check for duplicates
 router.post("/signup", async(req, res, next) => {
-
+  
   try {
     /** @type User */
     const {name, email, password} = req.body;

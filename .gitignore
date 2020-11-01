@@ -1,8 +1,7 @@
 miscbin
 
 # `.css` compiles off .scss
-public/stylesheets/template.css
-public/stylesheets/template.css.map
+*.css
 
 # Logs
 logs

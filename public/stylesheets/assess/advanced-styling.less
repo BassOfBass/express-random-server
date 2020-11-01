@@ -1,0 +1,112 @@
+#searchbox {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  & #search {
+    max-width: 100%;
+    border: 2px solid transparent;
+    -webkit-appearance: none; 
+    appearance: none;
+    
+    &:hover {
+      border: 2px solid hsl(210, 100%, 60%);
+    }
+
+    &:focus {
+      box-shadow: 0 0 5px 5px hsl(210, 100%, 60%);
+      border-color: transparent;
+    }
+    
+  }
+
+  & div {
+    position: absolute;
+    right: 1.5em;
+
+    background: url(../../images/search-24px.png);
+    width: 24px;
+    height: 24px;
+  }
+}
+
+button:focus,
+input:focus,
+select:focus {
+  outline: none;
+}
+
+#everypony {
+  & li {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+  & input[type="radio"] {
+    -webkit-appearance: none;
+    appearance:none;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 2px solid var(--primary-colour0);
+    outline: none;
+
+    &::before {
+      display: block;
+      content: " ";
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      background-color: red;
+      font-size: 1.2em;
+      transform: translate(3px, 3px) scale(0);
+      transform-origin: center;
+      transition: all 0.3s ease-in;
+    }
+
+    &:checked::before {
+      transform: translate(3px, 3px) scale(1);
+      transition: all 0.3s cubic-bezier(0.25, 0.25, 0.56, 2);
+    }
+  }
+}
+
+#fatstyles {
+
+  & fieldset {
+
+    & > div {
+      display: flex;
+      flex-flow: row wrap;
+    }
+  }
+
+  & legend {
+    color: white;
+    background: black;
+  }
+
+  & input {
+    box-shadow: inset 1px 1px 3px #ccc;
+
+    &:hover, 
+    &:focus {
+      background-color: #eee;
+    }
+
+    &:invalid {
+      border: 2px solid transparent;
+      box-shadow: 1px 1px 3px hsl(0, 55%, 50%),
+      -1px -1px 3px hsl(0, 55%, 50%);
+    }
+
+    &:required {
+      border: 2px solid hsl(0, 55%, 50%);
+    }
+  }
+
+  & button {
+    width: 60%;
+    margin: 0 auto;
+  }
+}

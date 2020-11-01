@@ -66,6 +66,10 @@ router.get('/', (req, res, next) => {
   });
 });
 
+router.get("/postcard", (req, res, next) => {
+  res.render("assess/forms/postcard", { title: "Postcard" });
+});
+
 router.get("/:section/:article", (req, res, next) => {
   res.render(`assess/${req.params.section}/${req.params.article}`);
 });
