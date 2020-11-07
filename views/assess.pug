@@ -8,11 +8,11 @@ block content
       ul
         each article in articles
           li 
-            a(href=`#${article.heading}`) #{article.heading}
+            a(href=`#${article.id}`) #{article.heading}
 
     each article in articles
       article
-        h3 #{article.heading}
+        h3(id=`${article.id}`) #{article.heading}
         each link in article.links
           p #[a(href=link.href)= link.title]
         

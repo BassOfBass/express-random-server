@@ -99,8 +99,8 @@
   --primary-local-anchor-colour: hsl(270, 80%, 50%);
   --secondary-local-anchor-colour: hsl(270, 100%, 95%);
   // buttons
-  --positive-colour: hsl(120, 70%, 50%);
-  --negative-colour: hsl(0, 70%, 50%);
+  --positive-colour: 120;
+  --negative-colour: 0;
   --submit-colour: 220; 
 
   // widths
@@ -109,20 +109,20 @@
   --desktop-width: 1080px;
 
   // durations for transition and transform properties
-  --global-duration: 0.5s;
   --duration-none: 0;
   --duration-fast: 0.25s;
   --duration-norm: 0.5s;
   --duration-slow: 1s;
+  --global-duration: 0.5s;
 }
 
 // Set base font and the box sizing property 
 html {
+  box-sizing: border-box;
   // prep fpr sticky footer
   height: 100%;
   // Sets font size property which then becomes a basis for "rem" units 
   font: 16px Helvetica Neue, Helvetica, Arial, sans-serif;
-  box-sizing: border-box;
   line-height: 1.15; // Correct the line height in all browsers.
   -webkit-text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in iOS.
   padding: 0;
@@ -508,6 +508,9 @@ label {
 }
 
 input {
+  border: 2px solid transparent; 
+  transition: var(--global-duration);
+
   /* 
     Any currently enabled element that can be activated (selected, clicked on, typed into, etc.) or accept focus and also has a disabled state, in which it can't be activated or accept focus. 
   */
@@ -539,15 +542,33 @@ input {
   */
   // &:indeterminate {}
   
+
+
   /* 
-    Form controls that can have constraint validation applied and are currently valid. 
+    <input>, <select>, or <textarea> element that has the required attribute set on it. Only matches elements that can be required. The attribute included on a non-requirable element will not make for a match. 
   */
-  // &:valid {}
-  
+  &:required {
+    box-shadow: 0 0 3px 3px hsl(var(--submit-colour), 100%, 50%);
+  }
+
+  &:focus {
+    box-shadow: 0 0 5px 5px hsl(var(--submit-colour), 100%, 50%);
+  }
+
   /* 
     Form controls that have constraint validation applied and are currently not valid. Matches a form control whose value doesn't match the constraints set on it by it's attributes, such as "required", "pattern", "step" and "max". 
   */
-  // &:invalid {}
+  &:invalid {
+    border-color: hsl(var(--negative-colour), 100%, 50%);
+  }
+
+  /* 
+    Form controls that can have constraint validation applied and are currently valid. 
+  */
+  &:valid {
+    border-color: hsl(var(--positive-colour), 100%, 50%);
+  }
+  
   
   /* 
     A non-empty input whose current value is within the range limits specified by the "min" and "max" attributes and the "step". 
@@ -559,10 +580,7 @@ input {
   */
   // &:out-of-range {}
   
-  /* 
-    <input>, <select>, or <textarea> element that has the required attribute set on it. Only matches elements that can be required. The attribute included on a non-requirable element will not make for a match. 
-  */
-  // &:required {}
+  
   
   /* 
     <input>, <select>, or <textarea> element that does NOT have the required attribute set on it. Does not match elements that can't be required. 

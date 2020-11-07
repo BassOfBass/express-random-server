@@ -9,6 +9,7 @@
     border: 2px solid transparent;
     -webkit-appearance: none; 
     appearance: none;
+    transition-duration: var(--global-duration);
     
     &:hover {
       border: 2px solid hsl(210, 100%, 60%);
@@ -76,8 +77,9 @@ select:focus {
   & fieldset {
 
     & > div {
+      position: relative;
       display: flex;
-      flex-flow: row wrap;
+      flex-flow: column nowrap;
     }
   }
 
@@ -86,23 +88,57 @@ select:focus {
     background: black;
   }
 
+  & label {
+    padding: 0 0.5em;
+  }
+
   & input {
     box-shadow: inset 1px 1px 3px #ccc;
+
+    & + span::before {
+      position: absolute;
+      right: 0.5em;
+      bottom: 1.75em;
+    }
 
     &:hover, 
     &:focus {
       background-color: #eee;
     }
 
-    &:invalid {
-      border: 2px solid transparent;
+    &:required {
       box-shadow: 1px 1px 3px hsl(0, 55%, 50%),
       -1px -1px 3px hsl(0, 55%, 50%);
+
+      & + span::after {
+        position: absolute;
+        bottom: 4em;
+        right: 0.75em;
+        content: "required";
+        color: white;
+        background-color: black;
+        padding: 0.25em;
+      }
     }
 
-    &:required {
+    &:invalid {
       border: 2px solid hsl(0, 55%, 50%);
+      
+      & + span::before {
+        content: '✖';
+        color: red;
+      }
     }
+
+    &:valid {
+      border: 2px solid lightgreen;
+
+      & + span::before {
+        content: '✓';
+        color: green;
+      }
+    }
+
   }
 
   & button {
