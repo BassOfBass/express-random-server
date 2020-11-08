@@ -113,7 +113,7 @@
   --duration-fast: 0.25s;
   --duration-norm: 0.5s;
   --duration-slow: 1s;
-  --global-duration: 0.5s;
+  --duration-global: var(--duration-norm);
 }
 
 // Set base font and the box sizing property 
@@ -134,6 +134,7 @@ html {
 *::before, 
 *::after {
   box-sizing: inherit;
+  transition-duration: var(--duration-global);
 }
 
 body {
@@ -153,8 +154,6 @@ main {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  max-width: var(--desktop-width);
-  margin: 1em auto;
 }
 
 // Style semantic tags for older browsers 
@@ -211,6 +210,26 @@ h6 {
   padding: 0;
   margin: 0;
 }
+
+// TODO: make it so `content` area and `nav` indefinitely add rows
+section {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1em;
+
+  & > h1 {
+    width: 100%;
+    text-align: center;
+  }
+
+  & > nav {
+    flex: 0 0 20em;
+  }
+
+  & > article {
+    flex: 0 1 20em;
+  }
+}
 /* END Content sectioning */
 
 /* Text content */
@@ -252,7 +271,7 @@ a {
   text-decoration: none;
   background-color: transparent; // remove the gray background on active links in IE 10.
   outline: none;
-  transition: all var(--global-duration);
+  transition: all var(--duration-global);
   padding: 0.25em;
 
   &:link {
@@ -509,7 +528,7 @@ label {
 
 input {
   border: 2px solid transparent; 
-  transition: var(--global-duration);
+  transition: var(--duration-global);
 
   /* 
     Any currently enabled element that can be activated (selected, clicked on, typed into, etc.) or accept focus and also has a disabled state, in which it can't be activated or accept focus. 
@@ -784,7 +803,7 @@ button {
     color: hsl(var(--submit-colour), 100%, 25%);
     background-color: hsl(var(--submit-colour), 80%, 70%);
 
-    transition-duration: var(--global-duration);
+    transition-duration: var(--duration-global);
 
     &:hover {
       color: hsl(var(--submit-colour), 100%, 25%);

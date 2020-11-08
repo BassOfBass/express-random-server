@@ -1,5 +1,6 @@
 import express from 'express';
 import assessController from "../controllers/assessController.js";
+import { returnAbsoluteHREFServer } from "../utils/absoluteURL.js"
 
 const router = express.Router();
 
@@ -63,6 +64,7 @@ router.get('/', (req, res, next) => {
     title: "MDN assessments",
     section: "Forms",
     articles: ARTICLES,
+    absoluteURL: returnAbsoluteHREFServer(req),
   });
 });
 

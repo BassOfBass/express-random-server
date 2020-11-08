@@ -2,8 +2,7 @@ extends layout
 
 block content
   section
-    h2 #{section}
-
+    h1 #{section}
     nav
       ul
         each article in articles
@@ -12,7 +11,7 @@ block content
 
     each article in articles
       article
-        h3(id=`${article.id}`) #{article.heading}
+        h2(id=`${article.id}`) #{article.heading}
         each link in article.links
-          p #[a(href=link.href)= link.title]
+          p #[a( href=absoluteURL(link.href) )= link.title]
         

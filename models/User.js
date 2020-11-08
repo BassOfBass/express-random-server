@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { returnAbsoluteHREF } from "../utils/absoluteURL.js";
+import { returnAbsoluteHREFServer } from "../utils/absoluteURL.js";
 
 const { Schema, model } = mongoose;
 const userSchema = new Schema({
@@ -10,7 +10,7 @@ const userSchema = new Schema({
 });
 
 userSchema.virtual("url").get(function() {
-  const url = returnAbsoluteHREF(`/users/${this._id}`);
+  const url = returnAbsoluteHREFServer(`/users/${this._id}`);
   return url;
 });
 

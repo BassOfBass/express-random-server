@@ -14,5 +14,11 @@
       }
     ],
     "files.autoSave": "onWindowChange",
+    "javascript.preferences.quoteStyle": "double",
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "javascript.referencesCodeLens.enabled": true,
+    "[markdown]": {
+      "files.trimTrailingWhitespace": false
+    }
 	}
 }

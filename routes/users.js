@@ -1,6 +1,6 @@
 import express from 'express';
 import User from "../models/User.js";
-import { returnAbsoluteHREF } from "../utils/absoluteURL.js";
+import { returnAbsoluteHREFServer } from "../utils/absoluteURL.js";
 
 const router = express.Router();
 
@@ -27,8 +27,8 @@ router.get("/signup", async(req, res, next) => {
   try {
     res.render("users/signup", {
       title: "Account signup page",
-      scriptHREF: returnAbsoluteHREF("/js/users/signup.js"),
-      formHREF: returnAbsoluteHREF("/users/signup")
+      scriptHREF: returnAbsoluteHREFServer("/js/users/signup.js"),
+      formHREF: returnAbsoluteHREFServer("/users/signup")
     });
   } catch (error) {
     console.log(error)

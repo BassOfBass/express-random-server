@@ -76,9 +76,11 @@ block content
           Make the input mandatory to fill in, and give it a minimum length of 10 characters.
         li.
           Add an event listener that checks whether the inputted value is an email address, and whether it is long enough. If it doesn't look like an email address or is too short, provide the user with appropriate custom error messages.
-    form#jsvalidation
+    form#jsvalidation(novalidate)
       div
         label(for="mail") I would like you to provide me with an e-mail address:
-        input#mail(type="email" name="email" minlength="10" required)
+        input#mail(type="email" name="email")
       div
         button(type="submit") Submit
+      div
+        output
