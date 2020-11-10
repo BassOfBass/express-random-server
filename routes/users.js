@@ -1,6 +1,6 @@
 import express from 'express';
 import User from "../models/User.js";
-import { returnAbsoluteHREFServer } from "../utils/absoluteURL.js";
+import { returnAbsoluteHREFServer } from "../libraries/utils/absoluteURL.js";
 
 const router = express.Router();
 

@@ -1,0 +1,63 @@
+extends ../layout
+
+append styles
+  link(rel="stylesheet", href="/stylesheets/assess/learn-area.css")
+
+append scripts
+  script(src="/js/assess/learn-area.js" defer)
+
+block content
+  section
+    h1 #{title}
+    nav(hidden)
+      ul
+        li
+    article
+      header
+        h2 How to build custom form controls
+      section
+        form.no-widget(action="", method="POST")
+          select(name="myFruit")
+            option() Cherry
+            option() Lemon
+            option() Banana
+            option() Strawberry
+            option() Apple
+          div.select(tabindex="0", role="listbox")
+            span.value Cherry
+            ul.optlist.hidden(role="presentation")
+              li.option(role="option") Cherry
+              li.option(role="option") Lemon
+              li.option(role="option") Banana
+              li.option(role="option") Strawberry
+              li.option(role="option") Apple
+    article
+      header
+        h2 Using radio buttons
+      section
+        form
+          fieldset 
+            legend Pick a fruit
+            ul.styledselect
+              li
+                input#fruitCherry(type="radio", name="fruit", value="Cherry" checked)
+                label(for="fruitCherry") Cherry
+              li
+                input#fruitLemon(type="radio", name="fruit", value="Lemon")
+                label(for="fruitLemon") Lemon
+              li
+                input#fruitBanana(type="radio", name="fruit", value="Banana")
+                label(for="fruitBanana") Banana
+              li
+                input#fruitStrawberry(type="radio", name="fruit", value="Strawberry")
+                label(for="fruitStrawberry") Strawberry
+              li
+                input#fruitApple(type="radio", name="fruit", value="Apple")
+                label(for="fruitApple") Apple
+    article#formsjs
+      header 
+        h2 Sending forms through JavaScript
+      section#xhrdata
+        h3 Building an XMLHttpRequest manually
+        button(type="button") Click Me!
+        output

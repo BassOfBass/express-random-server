@@ -1,0 +1,158 @@
+.selectwidget select,
+no-widget .select {
+  position: absolute;
+  left: -5000em;
+  height: 0;
+  overflow: hidden;
+}
+
+.select {
+  position: relative;
+  // make control become part of the text flow and sizable at the same time 
+  display: inline-block;
+  min-width: 44px;
+  width: 10em;
+  min-height: 44px;
+  font-family: Verdana, Arial, sans-serif;
+  background : #F0F0F0;
+  background : 
+    linear-gradient(0deg, 
+    hsl(0, 0%, 89%), 
+    hsl(0, 0%, 99%) 50%, 
+    hsl(0, 0%, 94%));
+  border: 0.2em solid #000; 
+  border-radius: 0.4em; 
+  box-shadow: 0 0.1em 0.2em hsla(0, 0%, 0%, 0.45);
+  padding: 0.1em 2.5em 0.2em 0.5em; 
+  cursor: pointer;
+
+  &::after {
+    content: "▼";
+    position: absolute;
+    z-index : 1; // keep the arrow from overlapping the list of options
+    top: 0;
+    right: 0;
+    width   : 2em; 
+    height  : 100%;
+    color : hsl(0, 0%, 100%);
+    text-align : center;
+    background-color : hsl(0, 0%, 0%);
+    border-left  : 0.2em solid hsl(0, 0%, 0%); 
+    border-radius: 0 0.1em 0.1em 0;  
+    padding-top : 0.1em; 
+  }
+
+  &.active,
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 3px 1px hsl(156, 56%, 30%);
+  }
+
+  & .optlist {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index : 2;
+    list-style: none;
+    min-width : 100%;
+    max-height: 10em;
+    background: hsl(0, 0%, 94%);
+    border: 0.2em solid hsl(0, 0%, 0%); 
+    border-top-width : 0.1em; 
+    border-radius: 0 0 0.4em 0.4em;
+    box-shadow: 0 0.2em 0.4em hsla(0, 0%, 0%, 0.4); 
+    padding: 0;
+    margin : 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  
+
+    &.hidden {
+      max-height: 0;
+      visibility: hidden;
+    }
+  }
+
+  & .value {
+    display: inline-block;
+    width: 100%;
+    color: hsl(0, 0%, 0%);
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+  }
+
+  & .option {
+    color: hsl(0, 0%, 0%);
+    padding: 0.2em 0.3em;
+  }
+
+  & .highlight {
+    color: hsl(0, 0%, 100%);
+    background: hsl(0, 0%, 0%);
+  }
+}
+
+.styledselect {
+  display: inline-block;
+  padding: 0;
+
+  & > li {
+    display: flex;
+    list-style-type: none;
+    // min-width: 44px;
+    // width: 100%;
+    // min-height: 44px;
+    padding: 0;
+
+    & > [type="radio"] {
+      position: absolute;
+      left: -100vw;
+      top: -100vh;
+    }
+
+    & > label {
+      margin: 0;
+      line-height: 2;
+      padding: 0 0 0 4px;
+    }
+  }
+
+  &:not(:focus-within) {
+
+    & input:not(:checked) + label {
+      height: 0;
+      outline: none;
+      overflow: hidden;
+    }
+
+    & input:checked + label {
+      border: .2em solid #000;
+      border-radius: .4em;
+      box-shadow: 0 .1em .2em rgba(0,0,0,.45);
+
+      &::after {
+        content : "▼";
+        background: black;
+        float: right;
+        color: white;
+        padding: 0 4px;
+        margin: 0 -4px 0 4px;
+      }
+    }
+  }
+
+  &:focus-within {
+    border: 0.2em solid #000;
+    border-radius: 0.4em;
+    box-shadow: 0 0.1em 0.2em rgba(0,0,0,.45);
+
+    & input:checked + label {
+      background-color: #333;
+      color: #fff;
+      width: 100%;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { returnAbsoluteHREFServer } from "../utils/absoluteURL.js";
+import { returnAbsoluteHREFServer } from "../libraries/utils/absoluteURL.js";
 
 const { Schema, model } = mongoose;
 const userSchema = new Schema({

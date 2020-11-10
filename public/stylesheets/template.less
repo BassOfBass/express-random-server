@@ -107,6 +107,8 @@
   --mobile-width: 360px;
   --tablet-width: 720px;
   --desktop-width: 1080px;
+  --input-min-height: 44px;
+  --input-min-width: 44px;
 
   // durations for transition and transform properties
   --duration-none: 0;
@@ -154,6 +156,25 @@ main {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+
+  section {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 1em;
+  
+    & > h1 {
+      width: 100%;
+      text-align: center;
+    }
+  
+    & > nav {
+      flex: 0 0 20em;
+    }
+  
+    & > article {
+      flex: 0 1 20em;
+    }
+  }
 }
 
 // Style semantic tags for older browsers 
@@ -169,6 +190,7 @@ section {
 h1 {
   // Correct the font size and margin on `h1` elements within `section` and `article` contexts in Chrome, Firefox, and Safari.
   font-size: 2.2rem;
+  text-transform: capitalize;
   color: var(--primary-color1);
   // background-color: var(--secondary-color1);
   // border: 2px solid var(--tertiary-color1);
@@ -211,25 +233,7 @@ h6 {
   margin: 0;
 }
 
-// TODO: make it so `content` area and `nav` indefinitely add rows
-section {
-  display: flex;
-  flex-flow: row wrap;
-  padding: 1em;
 
-  & > h1 {
-    width: 100%;
-    text-align: center;
-  }
-
-  & > nav {
-    flex: 0 0 20em;
-  }
-
-  & > article {
-    flex: 0 1 20em;
-  }
-}
 /* END Content sectioning */
 
 /* Text content */
