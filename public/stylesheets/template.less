@@ -157,12 +157,17 @@ main {
   flex-flow: column nowrap;
   align-items: center;
 
-  section {
+  & > section {
     display: flex;
     flex-flow: row wrap;
     padding: 1em;
   
-    & > h1 {
+    & > h1,
+    & > h2,
+    & > h3,
+    & > h4,
+    & > h5,
+    & > h6 {
       width: 100%;
       text-align: center;
     }
@@ -185,6 +190,10 @@ header,
 nav, 
 section {
   display: block;
+}
+
+article {
+  padding: 0.5em;
 }
 
 h1 {
@@ -258,6 +267,11 @@ ul {
 
 li {
   text-align: inherit;
+}
+
+li > ul > li,
+li > ol > li {
+  font-size: 0.9em;
 }
 
 details {
@@ -926,6 +940,10 @@ button {
     padding: 0.5em;
     margin: 0;
   }
+}
+
+.localnav {
+
 }
 /* END Class rules */
 

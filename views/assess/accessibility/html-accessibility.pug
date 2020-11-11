@@ -1,0 +1,108 @@
+extends ../../layout
+
+append styles
+  link(rel="stylesheet", href="/stylesheets/assess/accessibility/html-accessibility.css")
+
+block content
+  section
+    h1 HTML accessibility
+    article
+      header
+        h2 HTML accessibility 1
+        blockquote
+          p.
+            In this task we will test your understanding of text semantics, and why they are good for accessibility. The given text is a simple information panel with action buttons, but the HTML is really bad.
+          p.
+            We want you to update it use appropriate semantic HTML. You don't need to worry too much about recreating the #[em exact] same look and text sizing, as long as the semantics are good.
+
+      section#htmlass1
+        h3 Need help?
+        p.
+          If you have any problems with our products, our  support center can offer you all the help you need, whether you want:
+        ol
+          li Advice choosing a new product
+          li Tech support on an existing product
+          li Refund and cancellation assistance
+        h4 Contact us now
+        p.
+          Our help center contains live chat, e-mail addresses, and phone numbers.
+        button(type="button") Find Contact Details
+        h4 Find out answers
+        p.
+          Our Forums section contains a large knowledge base of searchable previously asked questions, and you can always ask a new question if you can't find the answer you're looking for.
+        button(type="button") Access Forums
+
+    article
+      header
+        h2 HTML accessibility 2
+        blockquote
+          p.
+            In the second task, you have a form containing three input fields. You need to:
+          ul
+            li.
+              Semantically associate the input with their labels.
+            li.
+              Assume that these inputs will be part of a larger form, and wrap them in an element that associates them all together as a single related group.
+            li.
+              Give the group a description/title that summarises all of the information as personal data.
+          
+      section
+        form
+          fieldset
+            legend Personal details
+            ul
+              li
+                label(for="name") Name:
+                input#name(type="text" name="name")
+              li
+                label(for="age") Age:
+                input#age(type="number" name="age")
+              li
+                label(for="email") Email address:
+                input#email(type="email" name="email")
+
+    article
+      header
+        h2 HTML accessibility 3
+        blockquote
+          p.
+            In this task you are required to turn all the information links in the paragraph into good, accessible links.
+
+          ul
+            li.
+              The first two links just go to regular web pages.
+            li.
+              The third link goes to a PDF, and it's large — 8MB.
+            li.
+              The fourth link goes to a Word document, so the user will need some kind of application installed that can handle that.
+
+      section
+        p.
+          For more information about our activities, check out our #[a(href="/fundraising") fundraising page], #[a(href="/education") education page], #[a(href="/resources/sponsorship.pdf") sponsorship pack (opens a .pdf file)], and #[a(href="/resources/assessments.docx") assessment sheets (opens a Word document)].
+    
+    article
+      header
+        h2 HTML accessibility 4
+        blockquote
+          p.
+            In our final HTML accessibility task, you are given a simple image gallery, which has some accessibility problems. Can you fix them?
+
+          ul
+            li.
+              The header image has an accessiiblity issue, and so do the gallery images.
+            li.
+              You could take the header image further and implement it using CSS for arguably better accessibility. Why is this better, and what would a solution look like?
+      
+      section#htmlass4
+        h3 Groovy images
+        ul
+          li
+            a(href=absoluteURL("/images/teapot.jpg"))
+              pciture
+                img(src=absoluteURL("/images/teapot.jpg"))
+
+          li
+            a(href=absoluteURL("/images/football.jpg"))
+              pciture
+                img(src=absoluteURL("/images/football.jpg"))
+                

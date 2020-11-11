@@ -226,7 +226,7 @@
       const button = section.querySelector("button");
       const output = section.querySelector("output");
 
-      button.addEventListener( 'click', function() {
+      button.addEventListener( 'click', () => {
         sendData( {test:'ok'}, output );
       });
 
@@ -236,39 +236,32 @@
        * @param {HTMLOutputElement} output
        */
       function sendData(data, output) {
-        const XHR = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
+        const formData = new FormData();
 
-        const urlEncodedDataPairs = []
-        let urlEncodedData = ""
-        let name;
-
-        // Turn the data object into an array of URL-encoded key/value pairs.
-        for ( name in data ) {
-          urlEncodedDataPairs.push( encodeURIComponent( name ) + '=' + encodeURIComponent( data[name] ) );
+        // Push our data into our FormData object
+        for ( const name in data ) {
+          formData.append(name, data[name]);
         }
 
-        // Combine the pairs into a single string and replace all %-encoded spaces to 
-        // the '+' character; matches the behaviour of browser form submissions.
-        urlEncodedData = urlEncodedDataPairs.join( '&' ).replace( /%20/g, '+' );
-
         // Define what happens on successful data submission
-        XHR.addEventListener( 'load', (event) => {
+        xhr.addEventListener( 'load', (event) => {
           output.innerText = 'Yeah! Data sent and response loaded.';
         } );
 
         // Define what happens in case of error
-        XHR.addEventListener( 'error', (event) => {
+        xhr.addEventListener( 'error', (event) => {
           output.innerText = 'Oops! Something went wrong.';
         } );
 
         // Set up our request
-        XHR.open( 'POST', 'https://example.com/cors.php' );
+        xhr.open( 'POST', 'https://example.com/cors.php' );
 
         // Add the required HTTP header for form data POST requests
-        XHR.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+        xhr.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
 
         // Finally, send our data.
-        XHR.send( urlEncodedData );
+        xhr.send( formData );
       }
     }
   }

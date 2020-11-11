@@ -1,4 +1,20 @@
 /**
+ * Represents the section in test area.
+ */
+export class AssessCategory {
+  /**
+   * @param {string} id
+   * @param {string} heading
+   * @param {AssessArticle[]} articles
+   */
+  constructor(id, heading, articles) {
+    this.id = id;
+    this.heading = heading;
+    this.articles = articles;
+  }
+}
+
+/**
  * Represents an article in test area.
  */
 export class AssessArticle {

@@ -1,17 +1,26 @@
 extends layout
 
 block content
-  section
-    h1 #{section}
-    nav
+    h1 MDN tasks
+    nav.localnav
       ul
-        each article in articles
-          li 
-            a(href=`#${article.id}`) #{article.heading}
-
-    each article in articles
-      article
-        h2(id=`${article.id}`) #{article.heading}
-        each link in article.links
-          p #[a( href=absoluteURL(link.href) )= link.title]
+        each section in mdnassDB
+          li
+            p 
+              a(href=`#${section.id}`) #{section.heading}
+            ul
+              each article in section.articles
+                li 
+                  a(href=`#${article.id}`) #{article.heading}
+        
+    each section in mdnassDB
+      section
+        h2 #{section.heading}
+        each article in section.articles
+          article
+            heading
+              h3(id=`${article.id}`) #{article.heading}
+            section
+              each link in article.links
+                p #[a( href=absoluteURL(link.href) )= link.title]
         
