@@ -1,0 +1,100 @@
+extends ../../layout
+
+append styles
+  link(rel="stylesheet", href="/stylesheets/assess/accessibility/css-js-accessibility.css")
+
+append scripts
+  script(src="/js/assess/css-js-accessibility.js" defer)
+
+block content
+  section
+    h1 CSS and JavaScript accessibility
+    article
+      header
+        h2 CSS accessibility 1
+        p
+          a(href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/CSS_and_JavaScript/Test_your_skills:_CSS_and_JavaScript_accessibility#CSS_accessibility_1") 
+            cite Task 1 brief
+          .
+            :    
+        blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/CSS_and_JavaScript/Test_your_skills:_CSS_and_JavaScript_accessibility#CSS_accessibility_1")
+          p.
+            In the first task you are presented with a list of links. However, their accessibility is pretty bad — there is no way to really tell that they are links, or to tell which one the user is focussed on.
+
+          p.
+            We'd like you to assume that the existing ruleset with the #[code a] selector is supplied by some CMS, and that you can't change it — instead, you need to create new rules to make the links look and behave like links, and for the user to be able to tell where they are in the list.
+
+      section#cssacc1
+        ul
+          li #[a(href="") Animals]
+          li #[a(href="") Computers]
+          li #[a(href="") Diversity and inclusion]
+          li #[a(href="") Food]
+          li #[a(href="") Medicine]
+          li #[a(href="") Music]
+
+    article
+      header
+        h2 CSS accessibility 2
+        p
+          a(href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/CSS_and_JavaScript/Test_your_skills:_CSS_and_JavaScript_accessibility#CSS_accessibility_2")
+            cite Task 2 brief
+          .
+            :
+        blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/CSS_and_JavaScript/Test_your_skills:_CSS_and_JavaScript_accessibility#CSS_accessibility_2")
+          p.
+            In this next task you are presented with a simple bit of content — just headings and paragraphs. There are&nbsp; accessibility issues with the colors and sizing of the text; we'd like you to:
+          ol
+            li.
+              Explain what the problems are, and what the guidelines are that state the acceptable values for color and sizing.
+            li.
+              Select new values for the color and font-size that fix the problem.
+            li.
+              Update the CSS with these new values to fix the problem.
+            li.
+              Test the code to make sure the problem is now fixed. Explain what tools or methods you used to select the new values and test the code.
+      section#cssacc2
+        h1 I am the eggman
+        p.
+          Prow scuttle parrel provost Sail ho shrouds spirits boom mizzenmast yardarm. Pinnace holystone mizzenmast quarter crow's nest nipperkin grog yardarm hempen halter furl.
+
+        h2 They are the eggman
+        p.
+          Swab barque interloper chantey doubloon starboard grog black jack gangway rutters.
+
+        h2 I am the walrus
+        p.
+          Deadlights jack lad schooner scallywag dance the hempen jig carouser broadside cable strike colors.
+
+    article
+      header
+        h2 JavaScript accessibility 1
+        p
+          a(href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/CSS_and_JavaScript/Test_your_skills:_CSS_and_JavaScript_accessibility#JavaScript_accessibility_1")
+            cite Task3 brief
+          .
+            :
+        blockquote(cite="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/CSS_and_JavaScript/Test_your_skills:_CSS_and_JavaScript_accessibility#JavaScript_accessibility_1")
+          p.
+            In our final task here, you have some JavaScripting to do. We have a simple app that presents a list of animal names. Clicking one of the animal names causes a further description of that animal to appear in a box below the list.
+
+          p.
+            But it is not very accessible — in its current state you can only operate it with the mouse. We'd like you to add to the HTML and JavaScript to make it keyboard acessible too.
+      section#jsacc1.preview
+        div.animal-list
+          h1 Animal Summaries
+          p The following list of animals can be clicked to display a description of that animal.
+          ul
+            li(
+              data-description="A type of wild mountain goat, with large recurved horns, found in Eurasia, North Africa, and East Africa."
+            ) Ibex
+            li(
+              data-description="A medium-sized marine mammal, similar to a manatee, but with a Dolphin-like tail."
+            ) Dugong
+            li(
+              data-description="A rare marsupial, which looks rather like a tiny kangaroo, measuring around 50 to 75 centimeters."
+            ) Quokka
+        div.animal-description
+          h2
+          p
+    

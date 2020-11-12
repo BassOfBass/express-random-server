@@ -35,6 +35,9 @@ const MDNASSDB = [
     new AssessArticle("accesshtml", "HTML accessibility", [
       new AssessArticleLink("HTML accessibility tasks", "/assess/accessibility/html-accessibility")
     ]),
+    new AssessArticle("accesscssjs", "CSS and JavaScript accessibility", [
+      new AssessArticleLink("CSS/JS accessibility tasks", "/assess/accessibility/css-js-accessibility")
+    ]),
   ]),
 ]
 
