@@ -1,0 +1,61 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", type="text/css", href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Sonsie+One")
+    link(rel="stylesheet", href="/stylesheets/assess/accessibility/wai-aria.css")
+    script(src="/js/assess/wai-aria-accessibility.js" defer)
+    title #{title}
+  body
+    //- Here is our main header that is used accross all the pages of our website
+    header
+      h1 Header
+      //- Even is it's not mandatory, it's common practice to put the main navigation menu within the main header
+      nav(role="navigation")
+        ul
+          li #[a(href="#") Home]
+          li #[a(href="#") Our Team]
+          li #[a(href="#") Projects]
+          li #[a(href="#") Contacts]
+        //- A Search form is another common non-linear way to navigate through a website.
+        form(action="")
+          div
+            input#search(type="search", name="sitesearch", role="search", aria-label="Search through site content")
+          div
+            button(type="submit") Go!
+    //- Here is our page's main content
+    main
+      //- TODO: write a proper fetch endpoint for this
+      section.quotescol(aria-live="assertive", aria-atomic="true")
+        h1 Random quote
+        blockquote
+          p
+      section
+        //- It contains an article
+        article(role="article")
+          h2 Article heading
+          p.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Donec a diam lectus. Set sit amet ipsum mauris. Maecenas congue ligula as quam viverra nec consectetur ant hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.
+          h3 subsection
+          p.
+            Donec ut librero sed accu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor.
+          p.
+            Pelientesque auctor nisi id magna consequat sagittis. Curabitur dapibus, enim sit amet elit pharetra tincidunt feugiat nist imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed odio eros.
+          h3 Another subsection
+          p.
+            Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum soclis natoque penatibus et manis dis parturient montes, nascetur ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem facilisis semper ac in est.
+          p.
+            Vivamus fermentum semper porta. Nunc diam velit, adipscing ut tristique vitae sagittis vel odio. Maecenas convallis ullamcorper ultricied. Curabitur ornare, ligula semper consectetur sagittis, nisi diam iaculis velit, is fringille sem nunc vet mi.
+      //- the aside content can also be nested within the main content
+      aside(role="complementary")
+        h2 Related
+        ul
+          li #[a(href="#") Oh I do like to be beside the seaside]
+          li #[a(href="#") Oh I do like to be beside the sea]
+          li #[a(href="#") Although in the North of England]
+          li #[a(href="#") It never stops raining]
+          li #[a(href="#") Oh well...]
+    footer
+      //- And here is our main footer that is used across all the pages of our website
+      p ©Copyright 2050 by nobody. All rights reversed.

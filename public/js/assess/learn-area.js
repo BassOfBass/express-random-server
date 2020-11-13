@@ -1,4 +1,6 @@
 (() => {
+  "use strict";
+
   // allow `forEach` to be used on node lists
   NodeList.prototype.forEach = function(callback) {
     Array.prototype.forEach.call(this, callback);
@@ -8,6 +10,7 @@
 
   buildCustomSelect(main);
   sendFormDataJS(main);
+  createAccessibleForm(main)
   
   /**
    * Adds logic to the custom select component.
@@ -265,5 +268,132 @@
       }
     }
   }
-})();
 
+  /**
+   * TODO: check why it doesn't run through all items in the loop
+   * @param {HTMLElement} main 
+   */
+  function createAccessibleForm(main) {
+    /**
+     * @typedef {Object} FormItem
+     * @property {HTMLLabelElement} label
+     * @property {HTMLInputElement} input
+     */
+
+    /**
+     * @type HTMLElement
+     */
+    const article = main.querySelector("#ariaforms");
+    /**
+     * @type HTMLUListElement
+     */
+    const errorList = article.querySelector('.errors');
+    const form = article.querySelector('form');
+    const inputs = form.querySelectorAll('input');
+    const labels = form.querySelectorAll('label');
+
+    /**
+     * @type {FormItem[]}
+     */
+    let formItems = [];
+
+    for (let i = 0; i < inputs.length - 1; i++) {
+      let obj = {};
+      obj.label = labels[i];
+      obj.input = inputs[i];
+      formItems.push(obj);
+    }
+
+    errorList.style.left = '-100%';
+
+    form.addEventListener("submit", validateSubmission);
+
+    /**
+     * 
+     * @param {Event} e 
+     */
+    function validateSubmission(e) {
+      errorList.innerHTML = '';
+
+      for (let i = 0; i < formItems.length; i++) {
+        const testItem = formItems[i];
+
+        if (testItem.input.value === '') {
+          errorList.style.left = '360px';
+          createLink(testItem);
+        }
+
+      }
+      
+      // prevent submission if the list of errors isn't empty
+      if (errorList.innerHTML !== '') {
+        e.preventDefault();
+      }
+    }
+
+    /**
+     * 
+     * @param {FormItem} testItem 
+     */
+    function createLink({ input }) {
+      const listItem = document.createElement('li');
+      const anchor = document.createElement('a');
+
+      anchor.textContent = 
+        input.name + 
+        ' field is empty: fill in your ' + 
+        input.name + 
+        '.';
+      anchor.href = '#' + input.name;
+      anchor.addEventListener("click", () => {
+        input.focus();
+      });
+
+      listItem.appendChild(anchor);
+      errorList.appendChild(listItem);
+    }
+  }
+
+  /**
+   * TODO: fix tabs not switching
+   * @param {HTMLElement} main 
+   */
+  function dinamizeInfoBox(main) {
+    const infobox = main.querySelector("#infobox");
+    /**
+     * @type NodeListOf<HTMLAnchorElement>
+     */
+    const tabs = infobox.querySelectorAll('#infobox li a');
+    /**
+     * @type NodeListOf<HTMLElement>
+     */
+    const panels = infobox.querySelectorAll('#infobox article');
+
+    for (let i = 0; i < tabs.length; i++) {
+      let tab = tabs[i];
+      setTabHandler(tab, i);
+    }
+
+    /**
+     * 
+     * @param {HTMLAnchorElement} tab 
+     * @param {number} tabPos 
+     */
+    function setTabHandler(tab, tabPos) {
+      tab.addEventListener("click", () => {
+
+        for (let i = 0; i < tabs.length; i++) {
+          tabs[i].className = '';
+        }
+
+        tab.className = 'active';
+
+        for (let i = 0; i < panels.length; i++) {
+          panels[i].className = '';
+        }
+
+        panels[tabPos].className = 'activepanel';
+      });
+    }
+  }
+})();

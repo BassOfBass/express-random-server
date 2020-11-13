@@ -156,3 +156,106 @@ no-widget .select {
     }
   }
 }
+
+#ariaforms {
+  position: relative;
+
+  form {
+    background: #eee;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px black;
+
+    & label, 
+    & input,
+    & button {
+      font-size: 1em;
+      line-height: 1.5;
+    }
+
+    & label {
+      text-align: right;
+    }
+  }
+
+  & div {
+    clear: both;
+  }
+
+  & .errors {
+    background: yellow;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px black;
+    padding: 20px;
+    width: 300px;
+    position: absolute;
+    left: 360px;
+  }
+}
+
+#infobox {
+  position: relative;
+  width: 452px;
+  height: 400px;
+  margin: 20px auto 0;
+
+  /* styling info-box tabs */
+
+  & ul {
+    border: 1px solid #b60000;
+    overflow: hidden;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+  }
+
+  & li {
+    float: left;
+    list-style-type: none;
+    width: 150px;
+  }
+
+  & li a {
+    display: inline-block;
+    text-decoration: none;
+    width: 100%;
+    line-height: 50px;
+    background: white;
+    color: #b60000;
+    text-align: center;
+    font-weight: bold;
+
+    &:focus, 
+    &:hover {
+    background-color: #b60000;
+    color: white;
+    }
+
+    &.active {
+      background-color: #b60000;
+      color: white;
+    }
+  }
+
+  /* styling info-box panels */
+
+  & .panels {
+    clear: both;
+    position: relative;
+    height: 352px;
+  }
+
+  & article {
+    background-color: #b60000;
+    color: white;
+    position: absolute;
+    padding: 10px 20px;
+    height: 352px;
+    top: 0;
+    left: 0;
+  }
+
+  & .activepanel {
+    z-index: 1;
+  }
+}
+

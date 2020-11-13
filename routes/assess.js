@@ -1,4 +1,5 @@
 import express from 'express';
+// import fs from "fs/promises";
 import assessController from "../controllers/assessController.js";
 import { returnAbsoluteHREFServer } from "../libraries/utils/absoluteURL.js"
 import { AssessCategory, 
@@ -38,6 +39,9 @@ const MDNASSDB = [
     new AssessArticle("accesscssjs", "CSS and JavaScript accessibility", [
       new AssessArticleLink("CSS/JS accessibility tasks", "/assess/accessibility/css-js-accessibility")
     ]),
+    new AssessArticle("waiaria", "WAI-ARIA", [
+      new AssessArticleLink("WAI-ARIA tasks", "/assess/accessibility/wai-aria")
+    ]),
   ]),
 ]
 
@@ -63,7 +67,25 @@ router.get("/postcard", (req, res, next) => {
   res.render("assess/forms/postcard", { title: "Postcard" });
 });
 
-router.get("/:section/:article", (req, res, next) => {
+router.get("/wai-aria", async (req, res, next) => {
+  res.render("assess/accessibility/wai-aria", {
+    title: "WAI-ARIA example"
+  })
+});
+
+
+// router.post("/wai-aria", async (req, res, mext) => {
+
+//   try {
+//     const json = await fs.readFile("/db/quotes.json");
+//     res.json(json);
+//   } catch (error) {
+//     console.log(error);
+//   }
+  
+// });
+
+router.get("/:section/:article", async (req, res, next) => {
   res.render(`assess/${req.params.section}/${req.params.article}`, { 
     absoluteURL: returnAbsoluteHREFServer(req)
   });
