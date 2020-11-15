@@ -1,0 +1,28 @@
+#listaria {
+  & div > div {
+    padding-left: 1.25em;
+    position: relative;
+
+    &::before {
+      content: " ";
+      width: 8px;
+      height: 8px;
+      background-color: black;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top: 25%;
+    }
+  }
+}
+
+#animalsaria {
+
+  & p {
+    color: purple;
+  }
+
+  & li {
+    cursor: pointer;
+  }
+}

@@ -26,13 +26,12 @@ html(lang="en")
           li
             a.glogo(href="/") Express Server
           li
-            form.gsearch
+            form.gsearch(role="search")
               div
-                label(for="globalsearch") Search:
-                input#globalsearch(type="search", name="search")
+                input#globalsearch(type="seach", name="query", aria-label="Search through site content")
               div
                 button(type="submit") Go!
-        nav.gnav
+        nav.gnav(role="navigation")
           ul
             li
               a(href="/things") Things
@@ -54,5 +53,5 @@ html(lang="en")
         address
           a(href="https://github.com/BassOfBass") My GitHub
         
-        button.glightswitch(type="button") 
-          | Dark #[br] Light
+        button.glightswitch(type="button").
+          Dark#[br]Light

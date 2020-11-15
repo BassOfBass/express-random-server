@@ -8,6 +8,9 @@ import { AssessCategory,
 } from "../libraries/types/AssessArticles.js";
 
 const router = express.Router();
+/**
+ * @type AssessCategory[]
+ */
 const MDNASSDB = [
   new AssessCategory("forms", "Forms", [
     new AssessArticle("formstruc", "Form structure", [
@@ -40,7 +43,7 @@ const MDNASSDB = [
       new AssessArticleLink("CSS/JS accessibility tasks", "/assess/accessibility/css-js-accessibility")
     ]),
     new AssessArticle("waiaria", "WAI-ARIA", [
-      new AssessArticleLink("WAI-ARIA tasks", "/assess/accessibility/wai-aria")
+      new AssessArticleLink("WAI-ARIA tasks", "/assess/accessibility/wai-aria-ass")
     ]),
   ]),
 ]

@@ -102,3 +102,17 @@ block content
               li dui neque eleifend lorem, a auctor libero turpis at sem.
               li Aliquam ut porttitor urna.
               li Nulla facilisi
+    article
+      header
+        h2 Basic custom controls
+      section#ariamedia.player
+        video(controls)
+          source(src="/media/video/rabbit320.mp4", type="video/mp4")
+          source(src="/media/video/rabbit320.webm", type="video/webm")
+          p Your browser doesn't support HTML5 video. Here is a #[a(href="/media/video/rabbit320.mp4") link to the video] instead.
+        div.controls
+          button.playpause(type="button") Play
+          button.stop(type="button") Stop
+          button.rwd(type="button") Rwd
+          button.fwd(type="button") Fwd
+          time(datetime="PT0H0M0S") 00:00

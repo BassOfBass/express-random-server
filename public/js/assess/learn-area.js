@@ -10,7 +10,8 @@
 
   buildCustomSelect(main);
   sendFormDataJS(main);
-  createAccessibleForm(main)
+  createAccessibleForm(main);
+  manageCustomVideoControls(main);
   
   /**
    * Adds logic to the custom select component.
@@ -396,4 +397,109 @@
       });
     }
   }
+
+  /**
+   * 
+   * @param {HTMLElement} main 
+   */
+  function manageCustomVideoControls(main) {
+    /**
+     * @type HTMLElement
+     */
+    const section = main.querySelector("#ariamedia");
+    /**
+     * @type HTMLButtonElement
+     */
+    const playPause = section.querySelector(".playpause");
+    /**
+     * @type HTMLButtonElement
+     */
+    const stop = section.querySelector(".stop");
+    /**
+     * @type HTMLButtonElement
+     */
+    const rwd = section.querySelector(".rwd");
+    /**
+     * @type HTMLButtonElement
+     */
+    const fwd = section.querySelector(".fwd");
+    const timeLabel = section.querySelector("time");
+    const player = section.querySelector("video");
+
+    player.removeAttribute("controls");
+    player.addEventListener("timeupdate", handleTimeDisplay);
+    playPause.addEventListener("click", handlePlayClick);
+    stop.addEventListener("click", handleStopClick);
+    rwd.addEventListener("click", handleRWDClick);
+    fwd.addEventListener("click", handleFWDClick);
+
+    /**
+     * 
+     * @param {MouseEvent} e 
+     */
+    function handlePlayClick(e) {
+
+      if (player.paused) {
+        player.play();
+        playPause.textContent = "Pause";
+      } else {
+        player.pause();
+        playPause.textContent = "Play";
+      }
+
+    };
+
+    /**
+     * 
+     * @param {MouseEvent} e 
+     */
+    function handleStopClick(e) {
+      player.pause();
+      player.currentTime = 0;
+      playPause.textContent = "Play";
+    }
+    
+    function handleRWDClick() {
+      player.currentTime -= 3;
+    }
+
+    function handleFWDClick() {
+      player.currentTime += 3;
+
+      if (player.currentTime >= player.duration || player.paused) {
+        player.pause();
+        player.currentTime = 0;
+        playPause.textContent = "Play";
+      }
+
+    }
+
+    /**
+     * TODO: rewrite with proper support for `<time>` tag.
+     */
+    function handleTimeDisplay() {
+      let minutes = Math.floor(player.currentTime / 60);
+      let seconds = Math.floor(player.currentTime - minutes * 60);
+
+      let minuteValue;
+      let secondValue;
+
+      if (minutes < 10) {
+        minuteValue = "0" + minutes;
+      } else {
+        minuteValue = minutes;
+      }
+
+      if (seconds < 10) {
+        secondValue = "0" + seconds;
+      } else {
+        secondValue = seconds;
+      }
+
+      let mediaTime = minuteValue + ":" +  secondValue;
+      timeLabel.textContent = mediaTime;
+    }
+    
+  }
+
 })();
