@@ -45,6 +45,9 @@ const MDNASSDB = [
     new AssessArticle("waiaria", "WAI-ARIA", [
       new AssessArticleLink("WAI-ARIA tasks", "/assess/accessibility/wai-aria-ass")
     ]),
+    new AssessArticle("acctroubles", "Accessibility troubleshooting", [
+      new AssessArticleLink("Accessibility task", "/assess/accessibility/troubleshooting")
+    ])
   ]),
 ]
 
