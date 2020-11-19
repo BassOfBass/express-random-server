@@ -1,7 +1,7 @@
 miscbin
 
 # `.css` compiles off .scss
-*.css
+public/**/*.css
 
 # Logs
 logs
