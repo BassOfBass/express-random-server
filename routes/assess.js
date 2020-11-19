@@ -79,17 +79,43 @@ router.get("/wai-aria", async (req, res, next) => {
   })
 });
 
+router.get("/client-frameworks", (req, res) => {
+  res.render("assess/frameworks", { 
+    title: "Client-side frameworks",
+    absoluteURL: returnAbsoluteHREFServer(req)
+  });
+});
 
-// router.post("/wai-aria", async (req, res, mext) => {
+router.get("/client-frameworks/:id", (req, res, next) => {
 
-//   try {
-//     const json = await fs.readFile("/db/quotes.json");
-//     res.json(json);
-//   } catch (error) {
-//     console.log(error);
-//   }
+  switch (req.params.id) {
+    case "vanilla":
+      res.render(`assess/client-frameworks/${req.params.id}`, {
+        title: "Vanilla DOM Todo List"
+      });
+      break;
+
+    case "react":
+      res.render(`assess/client-frameworks/${req.params.id}`, {
+        title: "React Todo List"
+      });
+      break
+
+    case "":
+      res.send();
+      break;
+    
+    case "":
+      res.send();
+      break;
+    
+    default:
+      next();
+      break;
+  }
+
   
-// });
+});
 
 router.get("/:section/:article", async (req, res, next) => {
   res.render(`assess/${req.params.section}/${req.params.article}`, { 

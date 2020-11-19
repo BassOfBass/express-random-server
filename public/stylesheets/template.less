@@ -1,4 +1,4 @@
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
 
 /* Generic rules */
 // only rules applying to base tags and their pseudo-selectors/elements go there
@@ -28,8 +28,6 @@
   --hslo-beta: 80%;
 
   /* Actual colours */
-
-  // relatively black and white to not go full meme with variable colours
   --primary-colour0:hsl(0, 0%, 15%);
   --secondary-colour0: hsl(0, 0%, 85%);
 
@@ -99,8 +97,8 @@
   --primary-local-anchor-colour: hsl(270, 80%, 50%);
   --secondary-local-anchor-colour: hsl(270, 100%, 95%);
   // buttons
-  --positive-colour: 120;
-  --negative-colour: 0;
+  --colour-positive: 120;
+  --colour-negative: 0;
   --submit-colour: 220; 
 
   // widths
@@ -140,7 +138,6 @@ html {
 }
 
 body {
-  position: relative;
   display: flex;
   flex-flow: column nowrap;
   min-height: 100%;
@@ -241,7 +238,6 @@ h6 {
   padding: 0;
   margin: 0;
 }
-
 
 /* END Content sectioning */
 
@@ -600,14 +596,14 @@ input {
     Form controls that have constraint validation applied and are currently not valid. Matches a form control whose value doesn't match the constraints set on it by it's attributes, such as "required", "pattern", "step" and "max". 
   */
   &:invalid {
-    border-color: hsl(var(--negative-colour), 100%, 50%);
+    border-color: hsl(var(--colour-negative), 100%, 50%);
   }
 
   /* 
     Form controls that can have constraint validation applied and are currently valid. 
   */
   &:valid {
-    border-color: hsl(var(--positive-colour), 100%, 50%);
+    border-color: hsl(var(--colour-positive), 100%, 50%);
   }
   
   

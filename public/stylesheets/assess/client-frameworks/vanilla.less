@@ -1,0 +1,42 @@
+html {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+::-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+*:focus {
+  outline: 3px dashed blue;
+  outline-offset: 0;
+}
+
+.todocontainer {
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 50em;
+
+  & .todolist {
+
+    & > li {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
+      & > span {
+        flex: 1 1 80%;
+        overflow-wrap: break-word;
+      }
+
+      & > button {
+        flex: 0 0 10%;
+        color: 
+          hsl(var(--colour-negative), 80%, 40%);
+        background-color: 
+          hsl(var(--colour-negative), 40%, 70%);
+      }
+    }
+  }
+}

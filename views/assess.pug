@@ -1,26 +1,28 @@
 extends layout
 
 block content
-    h1 MDN tasks
+  h1 MDN area
+  section
+    ul
+      li #[a(href=absoluteURL("/assess/client-frameworks")) Client Frameworks]
+  
+  section
     nav.localnav
       ul
         each section in mdnassDB
           li
-            p 
-              a(href=`#${section.id}`) #{section.heading}
+            p #[a(href=`#${section.id}`) #{section.heading}]
             ul
               each article in section.articles
-                li 
-                  a(href=`#${article.id}`) #{article.heading}
-        
-    each section in mdnassDB
-      section
-        h2 #{section.heading}
-        each article in section.articles
-          article
-            heading
-              h3(id=`${article.id}`) #{article.heading}
-            section
-              each link in article.links
-                p #[a( href=absoluteURL(link.href) )= link.title]
+                li #[a(href=`#${article.id}`) #{article.heading}]
+  each section in mdnassDB
+    section
+      h2 #{section.heading}
+      each article in section.articles
+        article
+          heading
+            h3(id=`${article.id}`) #{article.heading}
+          section
+            each link in article.links
+              p #[a( href=absoluteURL(link.href) )= link.title]
         

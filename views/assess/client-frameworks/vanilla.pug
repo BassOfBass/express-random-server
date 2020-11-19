@@ -1,0 +1,20 @@
+extends ../../layout
+
+append styles
+  link(rel="stylesheet", href="/stylesheets/assess/client-frameworks/vanilla.css")
+
+append scripts
+  script(src="/js/assess/client-frameworks/vanilla.js" defer)
+
+block content
+  h1 Vanilla TODO list
+  section.todocontainer
+    h2 TodoMatic
+    form.todoform(action="", method="post")
+      div
+        label(for="todoinput") What needs to be done?
+        input#todoinput(type="text", name="text", autocomplete="off")
+      div
+        button(type="submit") Add
+    
+    ul.todolist

@@ -6,7 +6,9 @@ import helmet from "helmet";
 import cookieParser from 'cookie-parser';
 import session from "express-session";
 import logger from 'morgan';
-import lessMiddleware from "less-middleware";  
+import lessMiddleware from "less-middleware";
+import compression from "compression";
+import cors from "cors";
 import multer from "multer";
 import mongoose from "mongoose";
 
@@ -36,11 +38,13 @@ app.use(logger('dev'));
 // > If you're using Express, this middleware will work, but you should use app.disable("x-powered-by") instead.
 app.disable("x-powered-by");
 app.use(helmet({ hidePoweredBy: false }));
-
+app.use(compression());
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session({ secret: "big-secret_alright", name: "leRedditFaec" }));
+;
 app.use(lessMiddleware(join(__dirname, "public")));
 app.use(upload.array());
 app.use(express.static(join(__dirname, 'public')));
