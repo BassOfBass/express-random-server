@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "es6",
+    "module": "commonjs",
     "target": "es6",
     "checkJs": true,
     "jsx": "preserve",

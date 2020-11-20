@@ -73,10 +73,16 @@ router.get("/postcard", (req, res, next) => {
   res.render("assess/forms/postcard", { title: "Postcard" });
 });
 
-router.get("/wai-aria", async (req, res, next) => {
+router.get("/wai-aria", (req, res, next) => {
   res.render("assess/accessibility/wai-aria", {
     title: "WAI-ARIA example"
   })
+});
+
+router.get("/acc-tables", (req, res) => {
+  res.render("assess/accessibility/acc-tables", {
+    title: "A Responsive Accessible Table"
+  });
 });
 
 router.get("/client-frameworks", (req, res) => {
@@ -89,6 +95,7 @@ router.get("/client-frameworks", (req, res) => {
 router.get("/client-frameworks/:id", (req, res, next) => {
 
   switch (req.params.id) {
+
     case "vanilla":
       res.render(`assess/client-frameworks/${req.params.id}`, {
         title: "Vanilla DOM Todo List"

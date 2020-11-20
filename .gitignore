@@ -2,6 +2,7 @@ miscbin
 
 # `.css` compiles off .scss
 public/**/*.css
+!public/bundles/**
 
 # Logs
 logs

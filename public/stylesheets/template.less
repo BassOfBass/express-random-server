@@ -137,6 +137,11 @@ html {
   transition-duration: var(--duration-global);
 }
 
+*:focus {
+  outline: 3px dashed #228bec;
+  outline-offset: 0;
+}
+
 body {
   display: flex;
   flex-flow: column nowrap;
@@ -263,6 +268,14 @@ ol {
 
 ul {
   list-style: none;
+
+  & > li {
+    
+    // fix for safari breaking semantics of lists with `list-style: none`
+    &::before { 
+      content: "\200B"; // add zero-width space
+    }
+  }
 }
 
 li {

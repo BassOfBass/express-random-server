@@ -1,0 +1,58 @@
+extends ../../layout
+
+append styles
+  link(rel="stylesheet", href="/stylesheets/assess/accessibility/acc-tables.css")
+
+append scripts
+  script(src="/js/assess/accessibility/acc-tables.js" defer)
+
+block content
+  h1 Responsive Table That Also Scrolls if Necessary
+  section(role="region" aria-labelledby="Cap1" tabindex="0")
+    table#Books
+      caption#Cap1 Books I May or May Not Have Read
+      tr
+        th Author
+        th Title
+        th Year
+        th ISBN-13
+        th ISBN-10
+      tr
+        td Miguel De Cervantes
+        td The Ingenious Gentleman Don Quixote of La Mancha
+        td 1605
+        td 9783125798502
+        td 3125798507
+      tr
+        td Mary Shelley
+        td Frankenstein; or, The Modern Prometheus
+        td 1818
+        td 9781530278442
+        td 1530278449
+      tr
+        td Herman Melville
+        td Moby-Dick; or, The Whale
+        td 1851
+        td 9781530697908
+        td 1530697905
+      tr
+        td Emma Dorothy Eliza Nevitte Southworth
+        td The Hidden Hand
+        td 1888
+        td 9780813512969
+        td 0813512964
+      tr
+        td F. Scott Fitzgerald
+        td The Great Gatsby
+        td 1925
+        td 9780743273565
+        td 0743273567
+      tr
+        td George Orwell
+        td Nineteen Eighty-Four
+        td 1948
+        td 9780451524935
+        td 0451524934
+  
+    p.
+      Note that this is an <em>accessible</em> (keyboard and screen reader) responsive (width and print) table. You can <a href="http://adrianroselli.com/2017/11/a-responsive-accessible-table.html">read everything that went into the code in the tutorial</a> (so you can make your own).
