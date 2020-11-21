@@ -55,4 +55,22 @@ block content
         td 0451524934
   
     p.
-      Note that this is an <em>accessible</em> (keyboard and screen reader) responsive (width and print) table. You can <a href="http://adrianroselli.com/2017/11/a-responsive-accessible-table.html">read everything that went into the code in the tutorial</a> (so you can make your own).
+      Note that this is an #[em accessible] (keyboard and screen reader) responsive (width and print) table. You can #[a(href="http://adrianroselli.com/2017/11/a-responsive-accessible-table.html") read everything that went into the code in the tutorial] (so you can make your own).
+
+    +semQuote("https://adrianroselli.com/2017/11/a-responsive-accessible-table.html#WrapToDo", "the article")
+      block quote
+        p.
+          I ran through quite a lot above. For the most part you can copy and paste the CSS and JavaScript and use it as-is. However, you will need to customize just a few things for each table on your site. I've made a quick list of  what to do from all the bits above:
+
+        ol
+          li.
+            Give your #[code &lt;table&gt;] an #[code id] attribute.
+          li.
+            Put the value of that #[code id] into the #[code aria-labelledby] on the wrapper.
+          li.
+            Identify the ideal width for the table in your print and screen media queries.
+          li.
+            Reset any cell text alignment for the smaller size.
+          li.
+            Choose an appropriate width for the cell label text in the #[code grid-template-columns] value.
+    

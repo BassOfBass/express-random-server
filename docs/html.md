@@ -15,3 +15,4 @@ If the `type` attribute is not specified, the user agent will not select a diffe
 ## TODOs
 
 - figure out why react page doesn't load scripts
+- check how `includes` interacts with mixins

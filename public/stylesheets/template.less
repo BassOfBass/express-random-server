@@ -194,6 +194,10 @@ section {
   display: block;
 }
 
+section {
+  overflow: visible;
+}
+
 article {
   padding: 0.5em;
 }
@@ -446,8 +450,18 @@ u {
 // wbr {}
 
 /* Demarcating edits */
-// del {}
-// ins {}
+
+del {
+  color: hsl(0, 0%, 33%);
+  text-decoration: line-through;
+  background-color: hsl(0, 100%, 87%);
+}
+
+ins {
+  text-decoration: none;
+  background-color: hsl(98, 91%, 86%);
+}
+
 /* END Demarcating edits */
 
 /* END Inline text semantics */
@@ -476,13 +490,110 @@ img {
 
 table {
   border-collapse: collapse;
+  width: 100%
+}
+
+caption {
+  text-align: left;
+  font-style: italic;
+  padding: 0.25em 0.5em 0.5em 0.5em;
+}
+
+tr {
+  
+  &:nth-child(even) {
+    background-color: hsla(0, 0%, 100%, 0.25);
+  }
+  
+  &:nth-child(odd) {
+    background-color: hsla(0, 0%, 100%, 0.5);
+  }
 }
 
 th, 
 td {
-  padding: 0.25em;
   text-align: start;
+  vertical-align: text-top;
+  text-indent: -0.5em;
+  padding: 0.25em 0.5em 0.25em 1em;
+
+  &:nth-of-type(3) {
+    text-align: end;
+  }
 }
+
+th {
+  vertical-align: bottom;
+  color: var(--secondary-colour0);
+  font-weight: bold;
+  background-color: var(--primary-colour0);
+}
+
+td {
+
+  &::before {
+    display: none;
+  }
+
+  &:nth-of-type(2) {
+    font-style: italic;
+  }
+}
+
+@media screen and (max-width: 37em), print and (max-width: 5in) {
+  table,
+  tr,
+  td {
+    display: block;
+  }
+
+  tr {
+    padding: 0.7em 2vw;
+  }
+
+  th,
+  tr:first-of-type {
+    display: none;
+  }
+
+  td {
+    display: grid;
+    grid-template-columns: 4em auto;
+    grid-gap: 1em 0.5em;
+
+    &::before {
+      display: inline;
+      font-weight: bold;
+    }
+
+    &:nth-of-type(3) {
+      text-align: left;
+    }
+  
+    &:nth-of-type(4), 
+    &:nth-of-type(5) {
+      text-align: right;
+      width: 12em;
+
+      &::before {
+        text-align: left;
+      }
+    }
+    
+    &:nth-of-type(2)::before {
+      font-style: normal;
+    }
+  }
+
+  caption {
+    font-style: normal;
+    background-color: rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font-weight: bold;
+  }
+}
+
+
 /* END Table content */
 
 /* Forms */
@@ -723,6 +834,15 @@ template {
 
 *[hidden] {
   display: none; // Add the correct display in IE 10.
+}
+
+// https://adrianroselli.com/2020/11/under-engineered-responsive-tables.html#CSS
+[role="region"][aria-labelledby][tabindex] {
+  overflow: auto;
+
+  &:focus {
+    outline: .1em solid hsla(0, 0%, 0%, 0.1);
+  }
 }
 
 // external unprotected link
