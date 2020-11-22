@@ -29,11 +29,29 @@ html(lang="en")
           li
             form.gsearch(role="search")
               div
-                input#globalsearch(type="seach", name="query", aria-label="Search through site content")
+                input#globalsearch(type="seach", name="query", aria-label="Search through the site content")
               div
                 button(type="submit") Go!
-        nav.gnav(role="navigation")
+
+        nav.gnav
           ul
+            //- creating side panel using https://css-tricks.com/the-checkbox-hack/
+            li.gsidepanel
+              label(for="togglegpanel", role="button", tabindex="0") Side Pane
+              input#togglegpanel(type="checkbox", aria-hidden="true")
+              aside.gpanel
+                h2 Side Panel
+                p Very important information about this panel
+                ol
+                  li.
+                    It has a really cool slide-out information box.
+                  li.
+                    This information box uses a combination of fixed positioning and a CSS transition for the smooth sliding.
+                  li.
+                    It also uses a cool technique called the #[a(href="https://css-tricks.com/the-checkbox-hack/") checkbox hack].
+                  li.
+                    This allows you to create a nice "toggle on/toggle off" UI effect without using any JavaScript, which will work in IE9 and above (the smooth transition will work in IE10 and above.)
+
             li
               a(href="/things") Things
             li
@@ -50,7 +68,7 @@ html(lang="en")
       block content
 
     block globalasides
-      aside.gaside aside
+      aside.gaside Global aside
 
     footer.gfooter 
       block globalfooter

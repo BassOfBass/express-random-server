@@ -273,13 +273,14 @@ ol {
 ul {
   list-style: none;
 
-  & > li {
+  // & > li {
     
-    // fix for safari breaking semantics of lists with `list-style: none`
-    &::before { 
-      content: "\200B"; // add zero-width space
-    }
-  }
+  //   // fix for safari breaking semantics of lists with `list-style: none`
+  //   // TODO: find a fix for it adding up the space
+  //   // &::before { 
+  //   //   content: "\200B"; // add zero-width space
+  //   // }
+  // }
 }
 
 li {
@@ -837,11 +838,24 @@ template {
 }
 
 // https://adrianroselli.com/2020/11/under-engineered-responsive-tables.html#CSS
-[role="region"][aria-labelledby][tabindex] {
+*[role="region"][aria-labelledby][tabindex] {
   overflow: auto;
 
   &:focus {
     outline: .1em solid hsla(0, 0%, 0%, 0.1);
+  }
+}
+
+*[role="button"] {
+  color: var(--primary-colour0);
+  background-color: var(--secondary-colour0);
+  border: 1px solid;
+  // &:hover {}
+  // &:focus {}
+  &:active {
+    box-shadow: 
+      inset -2px -2px 3px hsla(0, 0%, 100%, 0.6),
+      inset 2px 2px 3px hsla(0, 0%, 0%, 0.6);
   }
 }
 
@@ -1002,10 +1016,11 @@ button {
 
   // top part
   & .gtop {
-    display: inline-flex;
+    display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 0;
   }
 
   // logo link
@@ -1052,6 +1067,36 @@ button {
       display: flex;
       flex-flow: row wrap;
       justify-content: space-evenly;
+      padding: 0;
+    }
+  }
+}
+
+// sidepanel switch
+.gsidepanel {
+  position: relative;
+
+  & > label {
+    position: absolute;
+    z-index: 1;
+  }
+
+  & > input[type="checkbox"] {
+    position: absolute;
+    left: -100%;
+    opacity: 0;
+
+    & ~ .gpanel {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      max-width: var(--mobile-width);
+      background-color: var(--secondary-colour0);
+      padding: 1em;
+    }
+
+    &:checked ~ .gpanel {
+      left: 0;
     }
   }
 }

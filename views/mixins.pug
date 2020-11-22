@@ -1,9 +1,10 @@
 //- semantic `<blockquote>` which also exposes the `<cite>` URL
 mixin semQuote(url, source)
-  .quotewrapper
-    p As per
-      a(href=url) #[cite #{source}]
-      .
-        :
+  figure.semquote
+    figcaption 
+      p As per
+        a(href=url) #[cite #{source}]
+        .
+          :
     blockquote(cite=url)
       block quote
